@@ -3,10 +3,8 @@ module adder_gate(x, y, carry, out);
 	output carry;
 	output [7:0] out;
 	wire w1,w2,w3,w4,w5,w6,w7;
-
 /*Write your code here*/
-	zero=1'b0;
-	FA_gatelevel fa0(out[0],w1,x[0],y[0],zero);
+	FA_gatelevel fa0(out[0],w1,x[0],y[0],1'b0);
 	FA_gatelevel fa1(out[1],w2,x[1],y[1],w1);
 	FA_gatelevel fa2(out[2],w3,x[2],y[2],w2);
 	FA_gatelevel fa3(out[3],w4,x[3],y[3],w3);
@@ -15,7 +13,6 @@ module adder_gate(x, y, carry, out);
 	FA_gatelevel fa6(out[6],w7,x[6],y[6],w6);
 	FA_gatelevel fa7(out[7],carry,x[7],y[7],w7);
 /*End of code*/
-
 endmodule
 
 
