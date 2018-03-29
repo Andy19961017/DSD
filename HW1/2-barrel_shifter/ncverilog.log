@@ -1,0 +1,58 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Mar 29, 2018 at 01:41:53 CST
+ncverilog
+	barrel_gate_test.v
+	barrel_shifter_gate.v
+	+access+r
+Recompiling... reason: file './barrel_gate_test.v' is newer than expected.
+	expected: Thu Mar 29 01:41:39 2018
+	actual:   Thu Mar 29 01:41:51 2018
+file: barrel_gate_test.v
+	module worklib.barrel_gate_test:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.barrel_gate_test:v <0x644af4a7>
+			streams:  11, words:  6669
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 29       4
+		Primitives:              96       3
+		Registers:               11      11
+		Scalar wires:             2       -
+		Expanded wires:          11       2
+		Always blocks:            3       3
+		Initial blocks:           4       4
+		Pseudo assignments:       1       1
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.barrel_gate_test:v
+Loading snapshot worklib.barrel_gate_test:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+An ERROR occurs at no.          1 pattern: Output x0x0x0x0 != answer 10101010.
+
+An ERROR occurs at no.          2 pattern: Output 11111110 != answer 01010100.
+
+An ERROR occurs at no.          3 pattern: Output 00000000 != answer 10101000.
+
+An ERROR occurs at no.          4 pattern: Output 11111000 != answer 01010000.
+
+An ERROR occurs at no.          5 pattern: Output 00000000 != answer 10100000.
+
+An ERROR occurs at no.          6 pattern: Output 11100000 != answer 01000000.
+
+An ERROR occurs at no.          8 pattern: Output 11111100 != answer 11111110.
+
+===============================
+
+There are           7 errors.
+===============================
+
+Simulation complete via $finish(1) at time 54 NS + 1
+./barrel_gate_test.v:75 		$finish;
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Mar 29, 2018 at 01:41:54 CST  (total: 00:00:01)

@@ -1,0 +1,9 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+asu_gate_test.v
+asu_gate.v
+adder_gate.v
+barrel_shifter_gate.v
++access+r

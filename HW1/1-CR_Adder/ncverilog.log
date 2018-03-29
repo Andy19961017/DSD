@@ -1,0 +1,45 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Mar 29, 2018 at 00:07:35 CST
+ncverilog
+	adder_gate_test.v
+	adder_gate.v
+	+access+r
+Recompiling... reason: file './adder_gate_test.v' is newer than expected.
+	expected: Thu Mar 29 00:07:05 2018
+	actual:   Thu Mar 29 00:07:33 2018
+file: adder_gate_test.v
+	module worklib.adder_gate_test:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.adder_gate_test:v <0x280aa36e>
+			streams:  10, words:  6751
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 26       5
+		Primitives:              40       3
+		Registers:               11      11
+		Scalar wires:             2       -
+		Expanded wires:          16       2
+		Always blocks:            3       3
+		Initial blocks:           4       4
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.adder_gate_test:v
+Loading snapshot worklib.adder_gate_test:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+An ERROR occurs at no.         10 pattern: {carry out, output} 000 != answer 100.
+
+===============================
+
+There are           1 errors.
+===============================
+
+Simulation complete via $finish(1) at time 165 NS + 1
+./adder_gate_test.v:75 		$finish;
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Mar 29, 2018 at 00:07:36 CST  (total: 00:00:01)

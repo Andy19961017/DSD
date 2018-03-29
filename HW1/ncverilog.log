@@ -1,0 +1,9 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Mar 29, 2018 at 00:35:46 CST
+ncverilog
+	barrel_test.v
+	barrel_shifter.v
+	+access+r
+ncverilog: *E,FILEMIS: Cannot find the provided file barrel_test.v.
+ncverilog: *E,FILEMIS: Cannot find the provided file barrel_shifter.v.
+TOOL:	ncverilog	10.20-s114: Exiting on Mar 29, 2018 at 00:35:46 CST  (total: 00:00:00)

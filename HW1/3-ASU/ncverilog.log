@@ -1,0 +1,65 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Mar 29, 2018 at 19:51:48 CST
+ncverilog
+	asu_gate_test.v
+	asu_gate.v
+	adder_gate.v
+	barrel_shifter_gate.v
+	+access+r
+Recompiling... reason: file './asu_gate_test.v' is newer than expected.
+	expected: Thu Mar 29 19:51:34 2018
+	actual:   Thu Mar 29 19:51:47 2018
+file: asu_gate_test.v
+	module worklib.asu_gate_test:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.asu_gate_test:v <0x781fda9b>
+			streams:  10, words:  7252
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 64      10
+		Primitives:             172       4
+		Registers:               13      13
+		Scalar wires:             4       -
+		Expanded wires:          16       2
+		Always blocks:            3       3
+		Initial blocks:           4       4
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.asu_gate_test:v
+Loading snapshot worklib.asu_gate_test:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+An ERROR occurs at no.          1 pattern: Output xxxxxxxxx != answer 010101010.
+
+An ERROR occurs at no.          2 pattern: Output xxxxxxxxx != answer 001010100.
+
+An ERROR occurs at no.          3 pattern: Output 0xxxxxxxx != answer 010101000.
+
+An ERROR occurs at no.          4 pattern: Output 0xxxxxxxx != answer 001010000.
+
+An ERROR occurs at no.          5 pattern: Output 0xxxxxxxx != answer 001111111.
+
+An ERROR occurs at no.          6 pattern: Output 0xxxxxxxx != answer 011100111.
+
+An ERROR occurs at no.          7 pattern: Output 0xxxxxxx1 != answer 011000101.
+
+An ERROR occurs at no.          8 pattern: Output 0xxxxx0x1 != answer 011101110.
+
+An ERROR occurs at no.          9 pattern: Output 0xxx1x0x1 != answer 111100001.
+
+An ERROR occurs at no.         10 pattern: Output 0xxx1x001 != answer 100001011.
+
+===============================
+
+There are          10 errors.
+===============================
+
+Simulation complete via $finish(1) at time 11 NS + 1
+./asu_gate_test.v:81 		$finish;
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Mar 29, 2018 at 19:51:49 CST  (total: 00:00:01)
