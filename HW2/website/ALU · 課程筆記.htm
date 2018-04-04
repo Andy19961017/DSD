@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://chi_gitbook.gitbooks.io/personal-note/content/alu.html -->
+<html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ALU · 課程筆記</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.0.0">
+        <meta name="author" content="chi_gitBook">
+        
+        
+    
+    <link rel="stylesheet" href="./ALU · 課程筆記_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./ALU · 課程筆記_files/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="./ALU · 課程筆記_files/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="./ALU · 課程筆記_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./ALU · 課程筆記_files/website(1).css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://chi_gitbook.gitbooks.io/personal-note/content/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://chi_gitbook.gitbooks.io/personal-note/content/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="https://chi_gitbook.gitbooks.io/personal-note/content/addition.html">
+    
+    
+    <link rel="prev" href="https://chi_gitbook.gitbooks.io/personal-note/content/computer_arithmetic.html">
+    
+
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/chi_gitbook/personal-note" target="_blank" class="custom-link">課程筆記</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="xian_xing_dai_shu.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/xian_xing_dai_shu.html">
+            
+                    
+                    線性代數
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="zuo_ye_xi_tong_gai_lun.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zuo_ye_xi_tong_gai_lun.html">
+            
+                    
+                    作業系統概論
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1">
+            
+                <span>
+            
+                    
+                    Introduction作業系統
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="Introduction_to_Operating_System.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/Introduction_to_Operating_System.html">
+            
+                    
+                    Introduction to Operating System
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="a_introduction_of_computer-system_organization.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/a_introduction_of_computer-system_organization.html">
+            
+                    
+                    introduction of computer-system organization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="introduction_of_computer-system_architecture.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introduction_of_computer-system_architecture.html">
+            
+                    
+                    introduction of computer-system architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="introduction_of_operating-system_structure.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introduction_of_operating-system_structure.html">
+            
+                    
+                    introduction of operating-system structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="the_missionrole_of_os_operating-system_operations.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/the_missionrole_of_os_operating-system_operations.html">
+            
+                    
+                    The mission/role of OS OPERATING-SYSTEM OPERATIONS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="computing_environments.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/computing_environments.html">
+            
+                    
+                    COMPUTING ENVIRONMENTS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="system_structures.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/system_structures.html">
+            
+                    
+                    System Structures
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="user_operating-system_interface.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/user_operating-system_interface.html">
+            
+                    
+                    USER OPERATING-SYSTEM INTERFACE
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="da_nao_yu_xue_xi.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/da_nao_yu_xue_xi.html">
+            
+                    
+                    大腦與學習
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="yan_suan_fa_gai_lun.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/yan_suan_fa_gai_lun.html">
+            
+                    
+                    演算法概論
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="introductionyan_suan_fa.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introductionyan_suan_fa.html">
+            
+                    
+                    introduction演算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="sorting.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/sorting.html">
+            
+                    
+                    sorting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="time_complexity_asymptotic_notation.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/time_complexity_asymptotic_notation.html">
+            
+                    
+                    Time Complexity (Asymptotic notation )
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="shu_wei_xi_tong_shi_9a5728_4e8c29.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/shu_wei_xi_tong_shi_9a5728_4e8c29.html">
+            
+                    
+                    數位系統實驗(二)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="introductionverilog.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introductionverilog.html">
+            
+                    
+                    Introduction_verilog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="modulemo_zu.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/modulemo_zu.html">
+            
+                    
+                    module模組
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="zi_liao_xing_tai_net_&amp;_register.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zi_liao_xing_tai_net_&amp;_register.html">
+            
+                    
+                    資料型態Net &amp; Register
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="how_to_write_a_verilog_program.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/how_to_write_a_verilog_program.html">
+            
+                    
+                    How to write a verilog program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="veriloghw1.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/veriloghw1.html">
+            
+                    
+                    verilog_hw1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="zu_he_yu_yan_yu_ji_suan_ji_zu_zhi.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zu_he_yu_yan_yu_ji_suan_ji_zu_zhi.html">
+            
+                    
+                    組合語言與計算機組織
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="computer_abstractions_and_technology.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/computer_abstractions_and_technology.html">
+            
+                    
+                    Computer Abstractions and Technology
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="moores_law.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/moores_law.html">
+            
+                    
+                    Moore's Law
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="performance.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/performance.html">
+            
+                    
+                    Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="cpu_time.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/cpu_time.html">
+            
+                    
+                    CPU Time
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="amdahls_law.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/amdahls_law.html">
+            
+                    
+                    Amdahl's Law
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="duo_he_xin_chu_li_qi_you_qian_tu_ma.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/duo_he_xin_chu_li_qi_you_qian_tu_ma.html">
+            
+                    
+                    多核心處理器有前途嗎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.6" data-path="liao_jie_ren_wu_yu_zi_liao_de_ping_xing_chu_li_gong_neng.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/liao_jie_ren_wu_yu_zi_liao_de_ping_xing_chu_li_gong_neng.html">
+            
+                    
+                    瞭解任務與資料的平行處理功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.7" data-path="guan_yu_san_xiang_ping_xing_chu_li_gong_neng_bi_xu_yao_zhi_dao_de_shi.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/guan_yu_san_xiang_ping_xing_chu_li_gong_neng_bi_xu_yao_zhi_dao_de_shi.html">
+            
+                    
+                    關於三項平行處理功能必須要知道的事
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="instruction_set_architecture.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/instruction_set_architecture.html">
+            
+                    
+                    Instruction Set Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="register_operands.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/register_operands.html">
+            
+                    
+                    Register Operands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="memory_operands.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/memory_operands.html">
+            
+                    
+                    Memory Operands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="immediate_operands.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/immediate_operands.html">
+            
+                    
+                    Immediate Operands
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="signed_and_unsigned_numbers.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/signed_and_unsigned_numbers.html">
+            
+                    
+                    Signed and Unsigned Numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="representing_instructions.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/representing_instructions.html">
+            
+                    
+                    Representing Instructions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="computer_arithmetic.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/computer_arithmetic.html">
+            
+                    
+                    Computer Arithmetic
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.3.1" data-path="alu.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html">
+            
+                    
+                    ALU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="addition.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/addition.html">
+            
+                    
+                    Addition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="multiplication.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/multiplication.html">
+            
+                    
+                    Multiplication
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.4" data-path="division.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/division.html">
+            
+                    
+                    Division
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.5" data-path="floating_point_basic.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/floating_point_basic.html">
+            
+                    
+                    Floating Point Basic
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.6" data-path="floating_point.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/floating_point.html">
+            
+                    
+                    Floating Point
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="designing_a_single-cycle_processor.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/designing_a_single-cycle_processor.html">
+            
+                    
+                    Designing a Single-Cycle Processor
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="background.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/background.html">
+            
+                    
+                    Background
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="building_datapath.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/building_datapath.html">
+            
+                    
+                    Building Datapath
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="single-cycle_implementation.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/single-cycle_implementation.html">
+            
+                    
+                    Single-cycle Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="cheng_shi_she_ji_shi_7fd228_4e8c29.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/cheng_shi_she_ji_shi_7fd228_4e8c29.html">
+            
+                    
+                    程式設計實習(二)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="hw1.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/hw1.html">
+            
+                    
+                    hw1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="hw2.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/hw2.html">
+            
+                    
+                    hw2
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="sheng_ming_ke_xue_jiang_zuo.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/sheng_ming_ke_xue_jiang_zuo.html">
+            
+                    
+                    生命科學講座
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="zi_liao_jie_gou.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zi_liao_jie_gou.html">
+            
+                    
+                    資料結構
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="xian_bei_zhi_shi.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/xian_bei_zhi_shi.html">
+            
+                    
+                    先備知識
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="searching.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/searching.html">
+            
+                    
+                    searching
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="selection_problem.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/selection_problem.html">
+            
+                    
+                    selection problem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="recursive_algorithms.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/recursive_algorithms.html">
+            
+                    
+                    recursive algorithms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="zong_yi_ren_sheng_zhe_xue.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zong_yi_ren_sheng_zhe_xue.html">
+            
+                    
+                    宗夷人生哲學
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="zi_liao_tong_xun.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/zi_liao_tong_xun.html">
+            
+                    
+                    資料通訊
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="introductionzi_liao_tong_xun.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introductionzi_liao_tong_xun.html">
+            
+                    
+                    Introduction資料通訊
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="wireshark.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/wireshark.html">
+            
+                    
+                    WireShark
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12">
+            
+                <span>
+            
+                    
+                    Github
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="xue_xi_zi_yuan.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/xue_xi_zi_yuan.html">
+            
+                    
+                    學習資源
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13">
+            
+                <span>
+            
+                    
+                    2015年嵌入式系統課程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="introductionqian_ru_shi_ke_cheng.html">
+            
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/introductionqian_ru_shi_ke_cheng.html">
+            
+                    
+                    Introduction嵌入式課程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html#"><i class="fa fa-align-justify"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html#"><i class="fa fa-twitter"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://chi_gitbook.gitbooks.io/personal-note/content/alu.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://chi_gitbook.gitbooks.io/personal-note/content/">ALU</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="alu">ALU</h1>
+<pre><code>Arithmetic Logic Unit
+處理器裡面的算術邏輯單元
+</code></pre><h3 id="需要alu的指令">需要ALU的指令</h3>
+<ul>
+<li>add/sub</li>
+<li>and/or/nor</li>
+<li>slt(set on less than)</li>
+</ul>
+<pre><code>比較兩個暫存器的大小
+用一個減法即可達成
+因為只要知道減完的結果是正的數字或是負的數字就好
+</code></pre><h3 id="簡介">簡介</h3>
+<p><img src="./ALU · 課程筆記_files/aaa1234567.PNG" alt=""></p>
+<pre><code>兩個input:32個bit所組合而成
+output:一樣也是32個bit
+ALUop:控制ALU執行不同運算
+carry out:為了做加法運算
+</code></pre><h3 id="設計alu">設計ALU</h3>
+<p class="comments-section">Design Trick 1 : divide and conquer<div class="comments-icon"><div class="marker">+</div></div></p>
+<p>搞分化</p>
+<pre><code>有一些運算裡面
+可以把它切開來切成1-bit來做
+例如Boolean的運算
+
+比方說and or not這些運算 都可以一個bit一個bit來處理
+前面之前已經談過bitwise的operation
+
+但有些情況其實我們不能夠一個bit一個bit對付它
+例如加法
+我們都知道加法其實是需要處理進位
+也因此我們可以先把它拆成一個bit一個bit
+然後再把它的進位 也就是carry拉在一起
+
+如此一來把它們通通黏好之後
+整個32bit的ALU就完成了
+</code></pre><p class="comments-section">Design Trick 2 : solve part of the problem and extend<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">把一部分的問題解決掉然後去進一步的延伸<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>比如我們先做出and/or/add/sub後來再擴充slt/nor
+</code></pre><h2 id="加法orand-實現">加法/or/and 實現</h2>
+<p class="comments-section">Design Trick 3 : take pieces you know<div class="comments-icon"><div class="marker">+</div></div></p>
+<p><img src="./ALU · 課程筆記_files/aaa.PNG" alt=""></p>
+<p class="comments-section"><strong>組合成4 bits</strong><div class="comments-icon"><div class="marker">+</div></div></p>
+<p><img src="./ALU · 課程筆記_files/aaa12345678.PNG" alt=""></p>
+<h2 id="減法-實現">減法 實現</h2>
+<pre><code>被減數維持不變
+把減數拿來取2's complement
+再跟被減數相加
+
+2's complement: 先把它轉成1's complement然後再加1
+</code></pre><p><img src="./ALU · 課程筆記_files/bbb.PNG" alt=""></p>
+<p class="comments-section"><strong>組合成4 bits</strong>
+<img src="./ALU · 課程筆記_files/bbb1.PNG" alt=""><div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">最低位元以及最高位元我們需要做一些額外的處理<div class="comments-icon"><div class="marker">+</div></div></p>
+<p>最高位元</p>
+<pre><code>我們可能需要判斷這個減法或是這個加法有沒有發生overflow
+</code></pre><p>最低位元</p>
+<pre><code>減法其實是透過我們對B這個數字讓它去取2's complement
+
+實作:通過一個MUX讓它去選擇B或是B'
+如果當它選擇的是B'，我們得到的是B的1's complement
+最後一定要加1
+現在問題是這個1要怎麼來呢
+
+今天我們設計的MUX須要有一個select的信號去做選擇
+這裡我們讓select信號為1的時候我們選出來的值是B'
+因此當我們真的想要去做減法
+而需要supply一個額外的1進去到最低位元的時候
+就利用這邊我們所設計的select信號
+而這個select信號我們就把它叫做Bnegate
+</code></pre><h2 id="nor-實現">nor 實現</h2>
+<p>方法一:</p>
+<pre><code>nor gate接到ALU裡面的MUX問題就解決了
+</code></pre><p>方法二:</p>
+<p><img src="./ALU · 課程筆記_files/bbb123.PNG" alt=""></p>
+<pre><code>由DeMorgan's Law : 
+A nor B 可以轉換成(not A) and (not B)
+
+還記得我們曾經已經設計了一個B'為了做減法
+既然如此 我們何不乾脆再設計一個A'
+讓我們前面的這個MUX分別的去選到A'以及B' 
+然後使用and gate就成功了
+</code></pre><h2 id="判斷overflow">判斷Overflow</h2>
+<pre><code>發生overflow的原因:
+計算的結果
+正的數字太大 負的數字太小
+至於超過了我們可以表達的數字範圍
+</code></pre><p>舉例:</p>
+<pre><code>有一個4個bit的binary number
+表達的數字範圍就是-8到+7
+1000 ~ 0111
+</code></pre><p><img src="./ALU · 課程筆記_files/bbb1234.PNG" alt=""></p>
+<pre><code>兩個正的數字加起來得到一個負的數字
+或是兩個負的數字加起來得到一個正的數字
+這就是overflow
+</code></pre><ul>
+<li>加法overflow討論</li>
+</ul>
+<p>原因</p>
+<pre><code>正的數字的最高位元一定會為0
+正的數字當做加法的時候
+有一個carry進來了
+MSB最高位元就會為1
+</code></pre><p>思考</p>
+<pre><code>最高位元會不會有carry跑出去?
+可想而知一定不會
+因為這裡有兩個0
+兩個0怎麼加都不可能能夠產生出carry
+</code></pre><ul>
+<li>減法overflow討論</li>
+</ul>
+<p>原因</p>
+<pre><code>可想而知最高位元都是1
+因此它的carry out一定會是1
+
+如果今天最高位元它的carry in是0的話
+最後的output一定也會是0
+</code></pre><h3 id="overflow結論">Overflow結論</h3>
+<p><img src="./ALU · 課程筆記_files/bbb12345.PNG" alt=""></p>
+<pre><code>當Overflow發生:
+最高位元的carry out是1 最低位元的carry in是0
+或是
+最高位元的carry out是0 最低位元的carry in是1
+</code></pre><p class="comments-section"><strong>所以判斷這兩個bit只要不同就代表發生了Overflow</strong><div class="comments-icon"><div class="marker">+</div></div></p>
+<p><img src="./ALU · 課程筆記_files/bbb123456.PNG" alt=""></p>
+<pre><code>exclusive or gate 為1代表不同，也就是overflow發生
+</code></pre><h2 id="alu-zero">ALU zero</h2>
+<p><img src="./ALU · 課程筆記_files/bbb1234567.PNG" alt=""></p>
+<p class="comments-section">zero為1的時候
+result 我們的32個bit的result就是等於0
+當zero 這個bit為0的時候
+32個bit的result不全為0<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">實際的應用: 像Branch equal<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>把兩個暫存器的值拿來比較一下
+如果它們相等的話 就要把program counter的值設成label
+
+如何比較兩個暫存器的值是相等的呢?
+
+把它們拿來做減法
+當減法的結果result全為0的時候
+只要透過判斷zero這個bit
+當result全為0 zero就會為1
+
+因此可以很輕易的知道到底這兩個暫存器的值是相等還是不相等
+</code></pre><h2 id="alu-zero-實現">ALU zero 實現</h2>
+<p><img src="./ALU · 課程筆記_files/aaa123456789.PNG" alt=""></p>
+<p class="comments-section">把ALU裡面所有bit的output通通nor在一起<div class="comments-icon"><div class="marker">+</div></div></p>
+<p class="comments-section">nor gate:<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>當裡面有任何一個人不為0 也就是任何一個人為1
+它的output就會為0
+</code></pre><h2 id="set-on-less-than">set on less than</h2>
+<p><img src="./ALU · 課程筆記_files/bbb12345678.PNG" alt=""></p>
+<p class="comments-section">slt它是一個R-format的指令<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>是把Rs暫存器以及Rt暫存器的值拿來比較一下(做減法)
+如果Rs暫存器的值小於Rt 那麼我們讓Rd暫存器的值為1
+反之 就讓Rd暫存器的值為0
+</code></pre><p class="comments-section">看 $rd<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>因為暫存器裡面是由32個bit所組合而成
+0實際上是代表了我們總共有32個0
+1代表的是我們前面有31個0 而最後一個bit為1
+
+這個運算在高位元的31個bit其實都是一模一樣的，通通為0
+</code></pre><h2 id="set-on-less-than-實現">set on less than 實現</h2>
+<p class="comments-section">分三個Part討論<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>bit1~bit30
+bit31
+</code></pre><ul>
+<li>bit 1 ~ bit 30</li>
+</ul>
+<p><img src="./ALU · 課程筆記_files/ccc.PNG" alt=""></p>
+<pre><code>先看最簡單的部分bit1~bit30
+也就是次低位元到次高位元
+
+因為它的output值是0
+就把0接到MUX 讓它可以選出來 接出來 收工
+</code></pre><ul>
+<li>bit 31</li>
+</ul>
+<p><img src="./ALU · 課程筆記_files/ccc12.PNG" alt=""></p>
+<pre><code>其實大家也知道 我們要的output還是0
+這樣子就收工了嗎 當然還沒
+
+不要忘了我們要做的是set on less than 我們要比大小
+
+把兩個暫存器的值拿來相減
+看它減完的結果是正的還是負的
+</code></pre><font color="blue">
+要注意我們還是做32個bit的減法只是把整個減法裡面最高位元的值拿來看它是正的還是負的
+</font>
+
+<p>例如</p>
+<pre><code>我們把Rs暫存器減掉Rt 減完的結果我們發現它的值是負的
+意思是說它的值小於0
+
+表示Rs暫存器是真的小於Rt的
+透過這個結果 我們會知道最後Rd暫存器它必須要等於1
+</code></pre><p class="comments-section">那這個1哪裡來?<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>最簡單的方法其實就是我們把全部做減法
+
+減完了之後我們發現最高位元減完的結果是1
+那這個1剛剛好
+因為代表的是Rs減掉Rt的結果是一個負的值
+既然是負的值
+Rd剛好要1 我們缺了個1
+我們就利用這個最高位元的1拿來用就好
+</code></pre><p>結果</p>
+<pre><code>最高位元實際上output出來的值仍然是0
+可是我們要把最高位元整個減法減完的結果(取名叫做set)
+看它是0還是1來判斷減完的結果是正的還是負的
+
+而這個set將來會拿來接到最低位元去
+</code></pre><p class="comments-section">如果set為1<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>那麼就代表的意思是Rs小於Rt 自然而然將來這個1就接到Rd
+也就是接到我們的最低位元就好了(因為1==000...0001)
+</code></pre><p class="comments-section">如果set的值為0<div class="comments-icon"><div class="marker">+</div></div></p>
+<pre><code>那麼代表的意思就是Rs減掉Rt的值並沒有小於0
+那麼我們的Rd的值就不能是1 就要是0
+剛好set的值是0 把它接回去就對了  
+</code></pre><ul>
+<li><p class="comments-section">bit 0 <div class="comments-icon"><div class="marker">+</div></div></p>
+<p>  <img src="./ALU · 課程筆記_files/ccc123.PNG" alt=""></p>
+</li>
+</ul>
+<pre><code>利用剛才整個減法結果set接過來 output出來於是set on less than似乎就完成了
+
+請問這樣真的就把set on less than完成了嗎? 同學們可以想想看。
+</code></pre><font color="blue">
+要注意我們還是做32個bit的減法只是把整個減法裡面最高位元的值拿來看它是正的還是負的
+</font>
+
+
+
+
+
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/computer_arithmetic.html" class="navigation navigation-prev " aria-label="Previous page: Computer Arithmetic">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://chi_gitbook.gitbooks.io/personal-note/content/addition.html" class="navigation navigation-next " aria-label="Next page: Addition" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ALU","level":"1.7.3.1","depth":3,"next":{"title":"Addition","level":"1.7.3.2","depth":3,"path":"addition.md","ref":"addition.md","articles":[]},"previous":{"title":"Computer Arithmetic","level":"1.7.3","depth":2,"path":"computer_arithmetic.md","ref":"computer_arithmetic.md","articles":[{"title":"ALU","level":"1.7.3.1","depth":3,"path":"alu.md","ref":"alu.md","articles":[]},{"title":"Addition","level":"1.7.3.2","depth":3,"path":"addition.md","ref":"addition.md","articles":[]},{"title":"Multiplication","level":"1.7.3.3","depth":3,"path":"multiplication.md","ref":"multiplication.md","articles":[]},{"title":"Division","level":"1.7.3.4","depth":3,"path":"division.md","ref":"division.md","articles":[]},{"title":"Floating Point Basic","level":"1.7.3.5","depth":3,"path":"floating_point_basic.md","ref":"floating_point_basic.md","articles":[]},{"title":"Floating Point","level":"1.7.3.6","depth":3,"path":"floating_point.md","ref":"floating_point.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["mathjax","comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"mathjax":{"forceSVG":false,"version":"2.6-latest"},"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"chi_gitBook","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"課程筆記","language":"zh","links":{"sidebar":{"課程筆記":"https://www.gitbook.com/book/chi_gitbook/personal-note"},"gitbook":true},"gitbook":"*","description":""},"file":{"path":"alu.md","mtime":"2016-05-25T05:39:17.000Z","type":"markdown"},"gitbook":{"version":"3.0.0","time":"2016-05-25T05:40:02.574Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./ALU · 課程筆記_files/gitbook.js"></script>
+    <script src="./ALU · 課程筆記_files/theme.js"></script>
+    
+        
+        <script src="./ALU · 課程筆記_files/MathJax.js" id=""></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/plugin.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/plugin(1).js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/search-engine.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/search.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/lunr.min.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/search-lunr.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/buttons.js"></script>
+        
+    
+        
+        <script src="./ALU · 課程筆記_files/buttons(1).js"></script>
+        
+    
+
+    
+
+
+</body></html>
