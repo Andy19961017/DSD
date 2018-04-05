@@ -1,0 +1,39 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Apr 05, 2018 at 06:14:31 CST
+ncverilog
+	simple_calculator.v
+	register_file.v
+	alu.v
+	+access+r
+Recompiling... reason: file './simple_calculator.v' is newer than expected.
+	expected: Thu Apr  5 06:13:00 2018
+	actual:   Thu Apr  5 06:14:27 2018
+file: simple_calculator.v
+	module worklib.simple_calculator:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.alu:v <0x77869f6d>
+			streams:   1, words:  1476
+		worklib.register_file:v <0x0afba2a6>
+			streams:   3, words:  2411
+		worklib.simple_calculator:v <0x588cdfa2>
+			streams:   1, words:   383
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		          Instances  Unique
+		Modules:          3       3
+		Registers:       24      24
+		Scalar wires:     2       -
+		Vectored wires:  10       -
+		Always blocks:    4       4
+	Writing initial simulation snapshot: worklib.simple_calculator:v
+Loading snapshot worklib.simple_calculator:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Apr 05, 2018 at 06:14:32 CST  (total: 00:00:01)
