@@ -46,7 +46,7 @@ module simple_calculator_tb;
         $display( "5:xxxxxxxx");     
         $display( "6:xxxxxxxx");     
         $display( "7:xxxxxxxx");     
-        WEN = 1'b1; RW=3'd1; busW = 1'b10101010; RX = 3'd0; RY = 3'd0;
+        WEN = 1'b1; RW=3'd1; busW = 8'b10101010; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
         $display("0X %b", busX );   
@@ -83,7 +83,7 @@ module simple_calculator_tb;
         #(`CYCLE*0.4)
 
         #(`CYCLE*0.2)
-        $display( "store 11111111 in REG#8");
+        $display( "store 11111111 in REG#7");
         $display( "0:00000000");        
         $display( "1:10101010");        
         $display( "2:xxxxxxxx");     
@@ -92,7 +92,7 @@ module simple_calculator_tb;
         $display( "5:xxxxxxxx");     
         $display( "6:xxxxxxxx");     
         $display( "7:11111111");     
-        WEN = 1'b1; RW=3'd8; busW = 1'b11111111; RX = 3'd0; RY = 3'd0;
+        WEN = 1'b1; RW=3'd7; busW = 8'b11111111; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
         $display("0X %b", busX );   
@@ -138,7 +138,7 @@ module simple_calculator_tb;
         $display( "5:xxxxxxxx");     
         $display( "6:xxxxxxxx");     
         $display( "7:11111111");     
-        WEN = 1'b1; RW=3'd0; busW =  1'b11001100; RX = 3'd0; RY = 3'd0;
+        WEN = 1'b1; RW=3'd0; busW =  8'b11001100; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
         $display("0X %b", busX );   
@@ -184,7 +184,7 @@ module simple_calculator_tb;
         $display( "5:xxxxxxxx");     
         $display( "6:xxxxxxxx");     
         $display( "7:11111111");     
-        WEN = 1'b0; RW=3'd3; busW = 1'b11001100; RX = 3'd0; RY = 3'd0;
+        WEN = 1'b0; RW=3'd3; busW = 8'b11001100; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
         $display("0X %b", busX );   
