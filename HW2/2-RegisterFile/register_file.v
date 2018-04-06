@@ -11,8 +11,8 @@ module register_file(
 input        Clk, WEN;
 input  [2:0] RW, RX, RY;
 input  [7:0] busW;
-output [7:0] busX, busY;
-    
+output reg [7:0] busX, busY;
+ 
 // write your design here
 reg [7:0] r0_w, r1_w, r2_w, r3_w, r4_w, r5_w, r6_w, r7_w;
 reg [7:0] r0_r, r1_r, r2_r, r3_r, r4_r, r5_r, r6_r, r7_r;
@@ -40,7 +40,7 @@ always@(*) begin
 		3'b100: busX=r4_r;
 		3'b101: busX=r5_r;
 		3'b110: busX=r6_r;
-		3'b111: busX=r7_r
+		3'b111: busX=r7_r;
    	endcase
 	case(RY)
 		3'b000: busY=r0_r;

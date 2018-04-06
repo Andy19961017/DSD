@@ -48,11 +48,11 @@ always begin #(`CYCLE * 0.5) Clk = ~Clk;
 end
 
 initial begin
-    busW[11:0] = data_base1[0];
-    WEN[11:0] = data_base1[1];
-    RW[11:0] = data_base1[2];
-    RX[11:0] = data_base1[3];
-    RY[11:0] = data_base1[4];
+    busW[7:0] = data_base1[0];
+    WEN[7:0] = data_base1[1];
+    RW[7:0] = data_base1[2];
+    RX[7:0] = data_base1[3];
+    RY[7:0] = data_base1[4];
 
     for(num = 5; num < (pattern_num * 5); num = num + 5) begin
         @(posedge Clk) begin
