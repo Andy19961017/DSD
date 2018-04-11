@@ -1,0 +1,139 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Apr 06, 2018 at 16:56:50 CST
+ncverilog
+	tb.v
+	register_file.v
+	+access+r
+Recompiling... reason: file './tb.v' is newer than expected.
+	expected: Fri Apr  6 15:45:34 2018
+	actual:   Fri Apr  6 16:56:46 2018
+file: tb.v
+	module worklib.simple_calculator_tb:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.simple_calculator_tb:v <0x7ca53182>
+			streams:   6, words: 33816
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:               26      26
+		Scalar wires:             2       -
+		Vectored wires:           6       -
+		Always blocks:            3       3
+		Initial blocks:           2       2
+		Pseudo assignments:       3       3
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.simple_calculator_tb:v
+Loading snapshot worklib.simple_calculator_tb:v .................... Done
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> run
+store 10101010 in REG#1
+0:00000000
+1:10101010
+2:xxxxxxxx
+3:xxxxxxxx
+4:xxxxxxxx
+5:xxxxxxxx
+6:xxxxxxxx
+7:xxxxxxxx
+0X 00000000
+1X 00000000
+2X 00000000
+3X 00000000
+4X 00000000
+5X 00000000
+6X 00000000
+7X 00000000
+0Y 00000000
+1Y 00000000
+2Y 00000000
+3Y 00000000
+4Y 00000000
+5Y 00000000
+6Y 00000000
+7Y 00000000
+store 11111111 in REG#7
+0:00000000
+1:10101010
+2:xxxxxxxx
+3:xxxxxxxx
+4:xxxxxxxx
+5:xxxxxxxx
+6:xxxxxxxx
+7:11111111
+0X 00000000
+1X 00000000
+2X 00000000
+3X 00000000
+4X 00000000
+5X 00000000
+6X 00000000
+7X 00000000
+0Y 00000000
+1Y 00000000
+2Y 00000000
+3Y 00000000
+4Y 00000000
+5Y 00000000
+6Y 00000000
+7Y 00000000
+store 11001100 in REG#0
+0:00000000
+1:10101010
+2:xxxxxxxx
+3:xxxxxxxx
+4:xxxxxxxx
+5:xxxxxxxx
+6:xxxxxxxx
+7:11111111
+0X 00000000
+1X 00000000
+2X 00000000
+3X 00000000
+4X 00000000
+5X 00000000
+6X 00000000
+7X 00000000
+0Y 00000000
+1Y 00000000
+2Y 00000000
+3Y 00000000
+4Y 00000000
+5Y 00000000
+6Y 00000000
+7Y 00000000
+false store 11001100 in REG#3
+0:00000000
+1:10101010
+2:xxxxxxxx
+3:xxxxxxxx
+4:xxxxxxxx
+5:xxxxxxxx
+6:xxxxxxxx
+7:11111111
+0X 00000000
+1X 00000000
+2X 00000000
+3X 00000000
+4X 00000000
+5X 00000000
+6X 00000000
+7X 00000000
+0Y 00000000
+1Y 00000000
+2Y 00000000
+3Y 00000000
+4Y 00000000
+5Y 00000000
+6Y 00000000
+7Y 00000000
+Use your eyes to debug. Ha ha !
+Simulation complete via $finish(1) at time 50 NS + 0
+./tb.v:225 	#(`CYCLE) $finish;
+ncsim> exit
+TOOL:	ncverilog	10.20-s114: Exiting on Apr 06, 2018 at 16:56:52 CST  (total: 00:00:02)

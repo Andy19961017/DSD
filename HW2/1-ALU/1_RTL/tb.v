@@ -52,7 +52,7 @@ module alu_rtl_tb;
         #(`CYCLE*0.2)
         ctrl=4'd0;
         x=8'b01111111;
-        y=8'd01111111;
+        y=8'b01111111;
         #(`CYCLE*0.4)
         if (out != 8'b11111110 || carry != 1'b1) $display( "error on (%b)", i );
         i=i+1;
@@ -114,7 +114,7 @@ module alu_rtl_tb;
         x=8'b10110011;
         y=8'b11111111;
         #(`CYCLE*0.4)
-        if (out != 8'b101100111 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b10110011 || carry != 1'b0) $display( "error on (%b)", i );
         i=i+1;
         #(`CYCLE*0.4)
 

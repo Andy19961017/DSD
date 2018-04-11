@@ -1,0 +1,14 @@
+ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
+TOOL:	ncverilog	10.20-s114: Started on Apr 11, 2018 at 21:50:11 CST
+ncverilog
+	tb.v
+	alu_rtl.v
+	+access+r
+file: alu_rtl.v
+module alu_rtl(ctrl,x,y,carry,out);
+     |
+ncvlog: *E,NOTSTT (alu_rtl.v,2|5): expecting a statement [9(IEEE)].
+	module worklib.alu_rtl_tb:v
+		errors: 1, warnings: 0
+ncverilog: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	ncverilog	10.20-s114: Exiting on Apr 11, 2018 at 21:50:11 CST  (total: 00:00:00)

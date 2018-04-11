@@ -1,11 +1,5 @@
 //RTL (use continuous assignment)
-module alu_rtl(
-    ctrl,
-    x,
-    y,
-    carry,
-    out  
-);
+module alu_rtl(ctrl,x,y,carry,out);
     
     input  [3:0] ctrl;
     input  [7:0] x;
@@ -24,7 +18,7 @@ module alu_rtl(
     assign out3={1'b0,x|y};
     assign out4={1'b0,~x};
     assign out5={1'b0,x^y};
-    assign out6={1'b0,x~|y};
+    assign out6={1'b0,~(x|y)};
     assign out7={1'b0,y<<x[2:0]};
     assign out8={1'b0,y>>x[2:0]};
     assign out9={1'b0,x[7],x[7:1]};
