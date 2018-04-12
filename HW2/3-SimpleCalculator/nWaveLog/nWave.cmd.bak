@@ -1,0 +1,2 @@
+wvResizeWindow -win $_nWave1 54 259 960 332
+wvResizeWindow -win $_nWave1 -4 1 1280 751

@@ -14,7 +14,7 @@ module simple_calculator_tb;
     // instantiate the design-under-test
     register_file rf(
         Clk  ,
-        WEN[0]  ,
+        WEN  ,
         RW[2:0]   ,
         busW ,
         RX[2:0]   ,
@@ -49,40 +49,57 @@ module simple_calculator_tb;
         WEN = 1'b1; RW=3'd1; busW = 8'b10101010; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
+        #(`CYCLE*0.01)
         $display("0X %b", busX );   
         RX = 3'd1;
+        #(`CYCLE*0.01)
         $display("1X %b", busX );   
         RX = 3'd2;
+        #(`CYCLE*0.01)
         $display("2X %b", busX );        
         RX = 3'd3;
+        #(`CYCLE*0.01)
         $display("3X %b", busX );        
         RX = 3'd4;
+        #(`CYCLE*0.01)
         $display("4X %b", busX );        
         RX = 3'd5;
+        #(`CYCLE*0.01)
         $display("5X %b", busX );        
         RX = 3'd6;
+        #(`CYCLE*0.01)
         $display("6X %b", busX ); 
         RX = 3'd7;
+        #(`CYCLE*0.01)
         $display("7X %b", busX ); 
         RY = 3'd0;
+        #(`CYCLE*0.01)
         $display("0Y %b", busY );   
         RY = 3'd1;
+        #(`CYCLE*0.01)
         $display("1Y %b", busY );   
         RY = 3'd2;
+        #(`CYCLE*0.01)
         $display("2Y %b", busY );        
         RY = 3'd3;
+        #(`CYCLE*0.01)
         $display("3Y %b", busY );        
         RY = 3'd4;
+        #(`CYCLE*0.01)
         $display("4Y %b", busY );        
         RY = 3'd5;
+        #(`CYCLE*0.01)
         $display("5Y %b", busY );        
         RY = 3'd6;
+        #(`CYCLE*0.01)
         $display("6Y %b", busY ); 
         RY = 3'd7;
+        #(`CYCLE*0.01)
         $display("7Y %b", busY ); 
-        #(`CYCLE*0.4)
+        #(`CYCLE*0.24)
 
         #(`CYCLE*0.2)
+        #(`CYCLE*0.01)
         $display( "store 11111111 in REG#7");
         $display( "0:00000000");        
         $display( "1:10101010");        
@@ -95,38 +112,54 @@ module simple_calculator_tb;
         WEN = 1'b1; RW=3'd7; busW = 8'b11111111; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
+        #(`CYCLE*0.01)
         $display("0X %b", busX );   
         RX = 3'd1;
+        #(`CYCLE*0.01)
         $display("1X %b", busX );   
         RX = 3'd2;
+        #(`CYCLE*0.01)
         $display("2X %b", busX );        
         RX = 3'd3;
+        #(`CYCLE*0.01)
         $display("3X %b", busX );        
         RX = 3'd4;
+        #(`CYCLE*0.01)
         $display("4X %b", busX );        
         RX = 3'd5;
+        #(`CYCLE*0.01)
         $display("5X %b", busX );        
         RX = 3'd6;
+        #(`CYCLE*0.01)
         $display("6X %b", busX ); 
         RX = 3'd7;
+        #(`CYCLE*0.01)
         $display("7X %b", busX ); 
         RY = 3'd0;
+        #(`CYCLE*0.01)
         $display("0Y %b", busY );   
         RY = 3'd1;
+        #(`CYCLE*0.01)
         $display("1Y %b", busY );   
         RY = 3'd2;
+        #(`CYCLE*0.01)
         $display("2Y %b", busY );        
         RY = 3'd3;
+        #(`CYCLE*0.01)
         $display("3Y %b", busY );        
         RY = 3'd4;
+        #(`CYCLE*0.01)
         $display("4Y %b", busY );        
         RY = 3'd5;
+        #(`CYCLE*0.01)
         $display("5Y %b", busY );        
         RY = 3'd6;
+        #(`CYCLE*0.01)
         $display("6Y %b", busY ); 
         RY = 3'd7;
+        #(`CYCLE*0.01)
         $display("7Y %b", busY ); 
-        #(`CYCLE*0.4)
+        #(`CYCLE*0.24)
 
         #(`CYCLE*0.2)
         $display( "store 11001100 in REG#0");
@@ -141,38 +174,54 @@ module simple_calculator_tb;
         WEN = 1'b1; RW=3'd0; busW =  8'b11001100; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
+        #(`CYCLE*0.01)
         $display("0X %b", busX );   
         RX = 3'd1;
+        #(`CYCLE*0.01)
         $display("1X %b", busX );   
         RX = 3'd2;
+        #(`CYCLE*0.01)
         $display("2X %b", busX );        
         RX = 3'd3;
+        #(`CYCLE*0.01)
         $display("3X %b", busX );        
         RX = 3'd4;
+        #(`CYCLE*0.01)
         $display("4X %b", busX );        
         RX = 3'd5;
+        #(`CYCLE*0.01)
         $display("5X %b", busX );        
         RX = 3'd6;
+        #(`CYCLE*0.01)
         $display("6X %b", busX ); 
         RX = 3'd7;
+        #(`CYCLE*0.01)
         $display("7X %b", busX ); 
         RY = 3'd0;
+        #(`CYCLE*0.01)
         $display("0Y %b", busY );   
         RY = 3'd1;
+        #(`CYCLE*0.01)
         $display("1Y %b", busY );   
         RY = 3'd2;
+        #(`CYCLE*0.01)
         $display("2Y %b", busY );        
         RY = 3'd3;
+        #(`CYCLE*0.01)
         $display("3Y %b", busY );        
         RY = 3'd4;
+        #(`CYCLE*0.01)
         $display("4Y %b", busY );        
         RY = 3'd5;
+        #(`CYCLE*0.01)
         $display("5Y %b", busY );        
         RY = 3'd6;
+        #(`CYCLE*0.01)
         $display("6Y %b", busY ); 
         RY = 3'd7;
+        #(`CYCLE*0.01)
         $display("7Y %b", busY ); 
-        #(`CYCLE*0.4)
+        #(`CYCLE*0.24)
 
         #(`CYCLE*0.2)
         $display( "false store 11001100 in REG#3");
@@ -187,39 +236,56 @@ module simple_calculator_tb;
         WEN = 1'b0; RW=3'd3; busW = 8'b11001100; RX = 3'd0; RY = 3'd0;
         #(`CYCLE*0.4)
         RX = 3'd0;
+        #(`CYCLE*0.01)
         $display("0X %b", busX );   
         RX = 3'd1;
+        #(`CYCLE*0.01)
         $display("1X %b", busX );   
         RX = 3'd2;
+        #(`CYCLE*0.01)
         $display("2X %b", busX );        
         RX = 3'd3;
+        #(`CYCLE*0.01)
         $display("3X %b", busX );        
         RX = 3'd4;
+        #(`CYCLE*0.01)
         $display("4X %b", busX );        
         RX = 3'd5;
+        #(`CYCLE*0.01)
         $display("5X %b", busX );        
         RX = 3'd6;
+        #(`CYCLE*0.01)
         $display("6X %b", busX ); 
         RX = 3'd7;
+        #(`CYCLE*0.01)
         $display("7X %b", busX ); 
         RY = 3'd0;
+        #(`CYCLE*0.01)
         $display("0Y %b", busY );   
         RY = 3'd1;
+        #(`CYCLE*0.01)
         $display("1Y %b", busY );   
         RY = 3'd2;
+        #(`CYCLE*0.01)
         $display("2Y %b", busY );        
         RY = 3'd3;
+        #(`CYCLE*0.01)
         $display("3Y %b", busY );        
         RY = 3'd4;
+        #(`CYCLE*0.01)
         $display("4Y %b", busY );        
         RY = 3'd5;
+        #(`CYCLE*0.01)
         $display("5Y %b", busY );        
         RY = 3'd6;
+        #(`CYCLE*0.01)
         $display("6Y %b", busY ); 
         RY = 3'd7;
+        #(`CYCLE*0.01)
         $display("7Y %b", busY ); 
-        #(`CYCLE*0.4)
+        #(`CYCLE*0.24)
 
         $display("Use your eyes to debug. Ha ha !");
+        $finish;
     end
 endmodule

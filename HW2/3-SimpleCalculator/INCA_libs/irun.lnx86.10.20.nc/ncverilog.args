@@ -2,7 +2,8 @@
 // File created by:  ncverilog
 // Do not modify this file
 //
+simple_calculator_tb.v
 simple_calculator.v
-register_file.v
 alu.v
+register_file.v
 +access+r

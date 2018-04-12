@@ -12,8 +12,8 @@ module alu_rtl(ctrl,x,y,carry,out);
     wire [8:0] w00,w01,w10,w11;
     wire [8:0] w0,w1;
 
-    assign out0=x+y;
-    assign out1=x-y;
+    assign out0={x[7],x[7:0]}+{y[7],y[7:0]};
+    assign out1={x[7],x[7:0]}-{y[7],y[7:0]};
     assign out2={1'b0,x&y};
     assign out3={1'b0,x|y};
     assign out4={1'b0,~x};

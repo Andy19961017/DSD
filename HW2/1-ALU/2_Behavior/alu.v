@@ -17,8 +17,8 @@ module alu(
 
 always@(*) begin
     case(ctrl)
-        4'b0000: {carry,out}={x+y};
-        4'b0001: {carry,out}={x-y};
+        4'b0000: {carry,out}={{x[7],x[7:0]}+{y[7],y[6:0]}};
+        4'b0001: {carry,out}={{x[7],x[7:0]}-{y[7],y[6:0]}};
         4'b0010: {carry,out}={1'b0,x&y};
         4'b0011: {carry,out}={1'b0,x|y};
         4'b0100: {carry,out}={1'b0,~x};

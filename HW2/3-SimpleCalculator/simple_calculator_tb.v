@@ -319,4 +319,8 @@ module simple_calculator_tb;
         // finish tb
         #(`CYCLE) $finish;
     end
+    initial begin
+    $dumpfile("simple.vcd");
+    $dumpvars;
+    end
 endmodule

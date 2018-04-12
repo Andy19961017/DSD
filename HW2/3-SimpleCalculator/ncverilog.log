@@ -1,39 +1,91 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Apr 05, 2018 at 06:14:31 CST
+TOOL:	ncverilog	10.20-s114: Started on Apr 12, 2018 at 01:50:59 CST
 ncverilog
+	simple_calculator_tb.v
 	simple_calculator.v
-	register_file.v
 	alu.v
+	register_file.v
 	+access+r
-Recompiling... reason: file './simple_calculator.v' is newer than expected.
-	expected: Thu Apr  5 06:13:00 2018
-	actual:   Thu Apr  5 06:14:27 2018
-file: simple_calculator.v
-	module worklib.simple_calculator:v
+Recompiling... reason: file './register_file.v' is newer than expected.
+	expected: Thu Apr 12 01:49:18 2018
+	actual:   Thu Apr 12 01:50:56 2018
+file: register_file.v
+	module worklib.register_file:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.alu:v <0x77869f6d>
-			streams:   1, words:  1476
-		worklib.register_file:v <0x0afba2a6>
-			streams:   3, words:  2411
-		worklib.simple_calculator:v <0x588cdfa2>
-			streams:   1, words:   383
+		worklib.register_file:v <0x06488324>
+			streams:  10, words:  3373
 	Loading native compiled code:     .................... Done
 	Building instance specific data structures.
 	Design hierarchy summary:
-		          Instances  Unique
-		Modules:          3       3
-		Registers:       24      24
-		Scalar wires:     2       -
-		Vectored wires:  10       -
-		Always blocks:    4       4
-	Writing initial simulation snapshot: worklib.simple_calculator:v
-Loading snapshot worklib.simple_calculator:v .................... Done
+		                  Instances  Unique
+		Modules:                  4       4
+		Registers:               33      33
+		Scalar wires:             5       -
+		Vectored wires:          10       -
+		Always blocks:            5       5
+		Initial blocks:           2       2
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.simple_calculator_tb:v
+Loading snapshot worklib.simple_calculator_tb:v .................... Done
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
 ncsim> run
-ncsim: *W,RNQUIE: Simulation is complete.
+4-bit x 4-bit unsigned multiplication
+1: store multiplicand A=13 in REG#1
+    [REG#1 = add 00001101 REG#0]
+    .... passed.
+2: store multiplier B=12 in REG#2
+    [REG#2 = add 00001100 REG#0]
+    .... passed.
+3: set REG#3 = (B[0]==1)? 8'b11111111: 8'b00000000
+    [REG#3 = and 0000_0001 REG#2]
+    [REG#3 = sub REG#0 REG#3]
+    .... passed.
+4: set REG#4 = (B[1]==1)? 8'b11111111: 8'b00000000
+    [REG#2 = sra REG#2]
+    [REG#4 = and 0000_0001 REG#2]
+    [REG#4 = sub REG#0 REG#4]
+    .... passed.
+5: set REG#5 = (B[2]==1)? 8'b11111111: 8'b00000000
+    [REG#2 = sra REG#2]
+    [REG#5 = and 0000_0001 REG#2]
+    [REG#5 = sub REG#0 REG#5]
+    .... passed.
+6: set REG#6 = (B[3]==1)? 8'b11111111: 8'b00000000
+    [REG#2 = sra REG#2]
+    [REG#6 = and 0000_0001 REG#2]
+    [REG#6 = sub REG#0 REG#6]
+    .... passed.
+7: shift & summation, REG#7 = A*B[0]
+    [REG#3 = and REG#1 REG#3]
+    [REG#7 = add REG#0 REG#3]
+    .... passed.
+8: shift & summation, REG#7 = A*B[1:0]
+    [REG#4 = and REG#1 REG#4]
+    [REG#4 = sll 0000_0001 REG#4]
+    [REG#7 = add REG#7 REG#4]
+    .... passed.
+9: shift & summation, REG#7 = A*B[2:0]
+    [REG#5 = and REG#1 REG#5]
+    [REG#5 = sll 0000_0010 REG#5]
+    [REG#7 = add REG#7 REG#5]
+    .... passed.
+10:shift & summation, REG#7 = A*B
+    [REG#6 = and REG#1 REG#6]
+    [REG#6 = sll 0000_0011 REG#6]
+    [REG#7 = add REG#7 REG#6]
+    .... passed.
+Calculation restuls: 13 * 12 =  156
+****************************        /|__/|
+**                        **      / O,O  |
+**   Congratulations !!   **    /_____   |
+** All Patterns Passed!!  **   /^ ^ ^ \  |
+**                        **  |^ ^ ^ ^ |w|
+****************************   \m___m__|_|
+Simulation complete via $finish(1) at time 350 NS + 0
+./simple_calculator_tb.v:320         #(`CYCLE) $finish;
 ncsim> exit
-TOOL:	ncverilog	10.20-s114: Exiting on Apr 05, 2018 at 06:14:32 CST  (total: 00:00:01)
+TOOL:	ncverilog	10.20-s114: Exiting on Apr 12, 2018 at 01:51:00 CST  (total: 00:00:01)

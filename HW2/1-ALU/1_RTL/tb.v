@@ -12,6 +12,8 @@ module alu_rtl_tb;
     wire       carry;
     wire [7:0] out;
 
+    reg clk;
+
     integer i;
     
     alu_rtl alu1(
@@ -21,13 +23,11 @@ module alu_rtl_tb;
         carry    ,
         out  
     );
-
-    always begin #(`CYCLE * 0.5) clk = ~clk;
-    end
-
+	always begin #(`CYCLE * 0.5) clk = ~clk;
+        end
     initial begin
         // initialization
-        Clk = 1'b0;
+        clk = 1'b0;
         i=0;
 
         //add
@@ -36,7 +36,7 @@ module alu_rtl_tb;
         x=8'd3;
         y=8'd10;
         #(`CYCLE*0.4)
-        if (out != 8'd13 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'd13 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -45,7 +45,7 @@ module alu_rtl_tb;
         x=8'b11111111;
         y=8'b00000001;
         #(`CYCLE*0.4)
-        if (out != 8'd0 || carry != 1'b1) $display( "error on (%b)", i );
+        if (out != 8'd11111110 || carry != 1'b0) $display( "error on (%b)", carry );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -54,7 +54,7 @@ module alu_rtl_tb;
         x=8'b01111111;
         y=8'b01111111;
         #(`CYCLE*0.4)
-        if (out != 8'b11111110 || carry != 1'b1) $display( "error on (%b)", i );
+        if (out != 8'b11111110 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -64,7 +64,7 @@ module alu_rtl_tb;
         x=8'd14;
         y=8'd7;
         #(`CYCLE*0.4)
-        if (out != 8'd7 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'd7 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -74,27 +74,27 @@ module alu_rtl_tb;
         x=8'b11110011;
         y=8'b00001001;
         #(`CYCLE*0.4)
-        if (out != 8'b11111011 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b00000001 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
         //Shift left logical variable
         #(`CYCLE*0.2)
         ctrl=4'd7;
-        x=8'b11110011;
         y=8'b11110011;
+        x=8'b11110011;
         #(`CYCLE*0.4)
-        if (out != 8'b10011000 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b10011000 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
         //Shift right logical variable
         #(`CYCLE*0.2)
-        ctrl=4'd7;
-        x=8'b10110011;
-        y=8'b00000100;
+        ctrl=4'd8;
+        y=8'b10110011;
+        x=8'b00000100;
         #(`CYCLE*0.4)
-        if (out != 8'b00001011 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b00001011 || carry != 1'b0) $display( "error on (%b)", out );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -104,17 +104,17 @@ module alu_rtl_tb;
         x=8'b10110011;
         y=8'b00000000;
         #(`CYCLE*0.4)
-        if (out != 8'b11011001 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b11011001 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
-        //Shift right arithmetic
+        //Shift left rotate
         #(`CYCLE*0.2)
         ctrl=4'd10;
         x=8'b10110011;
         y=8'b11111111;
         #(`CYCLE*0.4)
-        if (out != 8'b10110011 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b01100111 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -124,7 +124,7 @@ module alu_rtl_tb;
         x=8'b10110011;
         y=8'b10110011;
         #(`CYCLE*0.4)
-        if (out != 8'b00000001 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b00000001 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -134,16 +134,20 @@ module alu_rtl_tb;
         x=8'b10110011;
         y=8'b10100011;
         #(`CYCLE*0.4)
-        if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
         //nop
         #(`CYCLE*0.2)
-        ctrl=4'd12;
+        ctrl=4'd14;
         x=8'b10110011;
         y=8'b10101111;
         #(`CYCLE*0.4)
-        if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%b)", i );
+        if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
+        $finish;
+	end
+	
+endmodule

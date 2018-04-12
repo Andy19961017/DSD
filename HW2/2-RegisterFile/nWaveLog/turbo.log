@@ -1,4 +1,3 @@
 Command Line: /usr/spring_soft/verdi/cur/platform/LINUXAMD64/bin/Novas
 uname(Linux cad30 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64)
-au time 8959.711507 0.300929 0.198378 delta 8978432 8978432 total 11994104 11994104
-6
+au time 1268.881381 1.900686 3.511005 delta 24498176 24498176 total 27513848 27513848

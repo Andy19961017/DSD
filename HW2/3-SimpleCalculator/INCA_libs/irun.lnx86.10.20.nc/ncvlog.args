@@ -5,9 +5,10 @@
 -XLMODE
 ./INCA_libs/irun.lnx86.10.20.nc
 -RUNMODE
+simple_calculator_tb.v
 simple_calculator.v
-register_file.v
 alu.v
+register_file.v
 -CDSLIB
 ./INCA_libs/irun.lnx86.10.20.nc/cdsrun.lib
 -HDLVAR
