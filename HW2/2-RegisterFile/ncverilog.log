@@ -1,9 +1,34 @@
 ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Apr 11, 2018 at 23:57:38 CST
+TOOL:	ncverilog	10.20-s114: Started on Apr 12, 2018 at 16:51:35 CST
 ncverilog
 	tb.v
 	register_file.v
 	+access+r
+Recompiling... reason: file './register_file.v' is newer than expected.
+	expected: Wed Apr 11 23:16:42 2018
+	actual:   Thu Apr 12 16:51:06 2018
+file: register_file.v
+	module worklib.register_file:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.register_file:v <0x188516ec>
+			streams:  10, words:  3498
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:               26      26
+		Scalar wires:             2       -
+		Vectored wires:           6       -
+		Always blocks:            3       3
+		Initial blocks:           1       1
+		Pseudo assignments:       3       3
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.simple_calculator_tb:v
 Loading snapshot worklib.simple_calculator_tb:v .................... Done
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
 ncsim> run
@@ -111,4 +136,4 @@ Use your eyes to debug. Ha ha !
 Simulation complete via $finish(1) at time 40100 PS + 0
 ./tb.v:289         $finish;
 ncsim> exit
-TOOL:	ncverilog	10.20-s114: Exiting on Apr 11, 2018 at 23:57:40 CST  (total: 00:00:02)
+TOOL:	ncverilog	10.20-s114: Exiting on Apr 12, 2018 at 16:51:37 CST  (total: 00:00:02)

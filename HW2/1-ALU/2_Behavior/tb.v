@@ -45,7 +45,7 @@ module alu_rtl_tb;
         x=8'b11111111;
         y=8'b00000001;
         #(`CYCLE*0.4)
-        if (out != 8'd0 || carry != 1'b0) $display( "error on (%b)", carry );
+        if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -94,7 +94,7 @@ module alu_rtl_tb;
         y=8'b10110011;
         x=8'b00000100;
         #(`CYCLE*0.4)
-        if (out != 8'b00001011 || carry != 1'b0) $display( "error on (%b)", out );
+        if (out != 8'b00001011 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
 
@@ -147,7 +147,11 @@ module alu_rtl_tb;
         if (out != 8'b00000000 || carry != 1'b0) $display( "error on (%d)", i );
         i=i+1;
         #(`CYCLE*0.4)
+	$display( "If there is no error message, then you passed !" );
         $finish;
 	end
-	
+	initial begin
+    	$dumpfile("alu.vcd");
+    	$dumpvars;
+    	end	
 endmodule

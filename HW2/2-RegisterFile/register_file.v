@@ -19,8 +19,7 @@ reg [7:0] r0_r, r1_r, r2_r, r3_r, r4_r, r5_r, r6_r, r7_r;
 
     
 always@(*) begin
-	if(WEN==1'b1)
-	begin
+	//if (WEN==1'b1) begin
 		case(RW)
 			3'b000: r0_w=busW;
 			3'b001: r1_w=busW;
@@ -31,7 +30,7 @@ always@(*) begin
 			3'b110: r6_w=busW;
 			3'b111: r7_w=busW;
 		endcase
-	end
+	//end
 	case(RX)
 		3'b000: busX=r0_r;
 		3'b001: busX=r1_r;
@@ -55,14 +54,19 @@ always@(*) begin
 end
 
 always@(posedge Clk) begin
-	r0_r<=8'b00000000;
-	r1_r<=r1_w;
-	r2_r<=r2_w;
-	r3_r<=r3_w;
-	r4_r<=r4_w;
-	r5_r<=r5_w;
-	r6_r<=r6_w;
-	r7_r<=r7_w;
+        r0_r<=8'b00000000;
+    if (WEN==1'b1) begin
+	case(RW)
+        3'b000: r0_r<=8'b00000000;
+	3'b001: r1_r<=r1_w;
+	3'b010: r2_r<=r2_w;
+	3'b011: r3_r<=r3_w;
+	3'b100: r4_r<=r4_w;
+	3'b101: r5_r<=r5_w;
+	3'b110: r6_r<=r6_w;
+	3'b111: r7_r<=r7_w;
+    endcase
+    end
 end	
 
 endmodule

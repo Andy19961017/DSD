@@ -71,3 +71,5 @@ define VIEW_MAP ( $VIEW_MAP \
 , .vams => vams \
 , .VAMS => VAMS \
 )
+define ELAB_SNAPSHOT
+define SNAPSHOT worklib.alu_rtl_tb:v
