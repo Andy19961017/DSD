@@ -1,0 +1,2 @@
+David A. Patterson and John L. Hennessy, "Computer Organization & Design:
+The Hardware/Software Interface. 3nd edition"
