@@ -65,6 +65,7 @@ module SingleCycle_MIPS(
 //==== combinational part =================================
     control top_control(
         .instruction(IR[31:26]) ,
+        .func(IR[5:0])
         .RegDST(RegDST) ,
         .Jump(Jump) ,
         .Branch(Branch) ,
@@ -115,11 +116,11 @@ module SingleCycle_MIPS(
         IR_addr=PC;*/
 
         //wire
-        ALU_y=(ALUSrc ? { {16{IR[15]}} ,IR[15:0]} : RD2);
-        WR=(RegDST ? IR[15:11] : IR[20:16]);
-        WD=(MemToReg ? ReadDataMem : ALUresult_mem);
         PCplus4=PC+4;
-        nextPC=Jump?{PCplus4[31:28],IR[25:0],2'b00}:((Branch & zero)? ({{14{IR[15]}},IR[15:0],2'b00}+PCplus4) :PCplus4 );
+        ALU_y=(ALUSrc ? { {16{IR[15]}} ,IR[15:0]} : RD2);
+        WR=(RegDST[0] ? IR[15:11] : (RegDST[1]? 5'd31:IR[20:16]) );
+        WD=(MemToReg[0] ? ReadDataMem : (MemToReg[1] ? PCplus4:ALUresult_mem) );
+        nextPC=Jump[0]?{PCplus4[31:28],IR[25:0],2'b00}: (Jump[1] ? RD1 :  ((Branch & zero)? ({{14{IR[15]}},IR[15:0],2'b00}+PCplus4) :PCplus4 ) );
 	
 	//output
 	ReadData2=RD2;
@@ -171,6 +172,7 @@ endmodule
 
 module control(
     instruction ,
+    func ,
     RegDST ,
     Jump ,
     Branch ,
@@ -181,22 +183,27 @@ module control(
     RegWrite
 );
 
-    input [5:0] instruction;
+    input [5:0] instruction, func;
     output reg Branch, MemWrite, ALUSrc, RegWrite;
-    output reg [1:0] RegDST, Jump, MemToReg;
-    output reg [1:0] ALUOp;
+    output reg [1:0] ALUOp, RegDST, Jump, MemToReg;
 
     always@(*) begin
-        if (instruction==6'b000000)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b100100100;
+        if (instruction==6'b000000) begin
+            if (func==6'b001000)
+                {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000000010;
+            else
+                {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b010001001000;
+        end
         else if (instruction==6'b100011)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b011100000;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b001011000000;
         else if (instruction==6'b101011)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b010010000;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b001000100000;
         else if (instruction==6'b000100)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b000001010;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000010100;
         else if (instruction==6'b000010)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b000000001;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000000001;
+        else if (instruction==6'b000011)
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b100101000001;
     end
 
 endmodule
