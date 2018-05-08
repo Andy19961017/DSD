@@ -1,1 +1,578 @@
-wvExit
+wvResizeWindow -win $_nWave1 0 1 1280 751
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd.fsdb" \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd"
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/Data_memory"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 )} 
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 8 9 )} 
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd.fsdb" \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd"
+wvReloadFile -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 10 11 12 )} 
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 10 11 12 )} 
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvGetSignalClose -win $_nWave1
+wvZoom -win $_nWave1 679.137931 18267.068966
+wvSetCursor -win $_nWave1 6687.136411 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 7268.555619 -snap {("G1" 2)}
+wvSetCursor -win $_nWave1 7607.716823 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 7333.157753 -snap {("G1" 9)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/alu_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/top_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/alu_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/ALU_to_mem"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/top_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/registers"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/alu_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/ALU_to_mem"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/Data_memory"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/PC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/nextPC\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 13 14 )} 
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/PC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/nextPC\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 13 14 )} 
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 7010.147082 -snap {("G1" 14)}
+wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
+wvExpandBus -win $_nWave1 {("G1" 14)}
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvSetCursor -win $_nWave1 5976.512935 -snap {("G1" 43)}
+wvSetCursor -win $_nWave1 5944.211868 -snap {("G1" 43)}
+wvSetCursor -win $_nWave1 6961.695481 -snap {("G1" 40)}
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvSetCursor -win $_nWave1 6993.996549 -snap {("G1" 14)}
+wvSetCursor -win $_nWave1 6784.039612
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvScrollUp -win $_nWave1 1
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 0
+wvScrollDown -win $_nWave1 1
+wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 14 )} 
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvCollapseBus -win $_nWave1 {("G1" 14)}
+wvSetPosition -win $_nWave1 {("G1" 14)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/alu_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/top_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/PC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/nextPC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/Jump} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 15 )} 
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/alu_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS/top_control"
+wvGetSignalSetScope -win $_nWave1 "/SingleCycle_tb/i_MIPS"
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/SingleCycle_tb/i_MIPS/top_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/top_control/ALUSrc} \
+{/SingleCycle_tb/i_MIPS/top_control/Branch} \
+{/SingleCycle_tb/i_MIPS/top_control/Jump} \
+{/SingleCycle_tb/i_MIPS/top_control/MemToReg} \
+{/SingleCycle_tb/i_MIPS/top_control/MemWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/RegDST} \
+{/SingleCycle_tb/i_MIPS/top_control/RegWrite} \
+{/SingleCycle_tb/i_MIPS/top_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUOp\[1:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/ALUctrl\[3:0\]} \
+{/SingleCycle_tb/i_MIPS/alu_control/instruction\[5:0\]} \
+{/SingleCycle_tb/i_MIPS/PC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/nextPC\[31:0\]} \
+{/SingleCycle_tb/i_MIPS/Jump} \
+{/SingleCycle_tb/i_MIPS/Branch} \
+{/SingleCycle_tb/i_MIPS/zero} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 16 17 )} 
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvConvertFile -win $_nWave1 -o \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd.fsdb" \
+           "/home/raid7_2/userb04/b04067/DSD/3HW/verilog/SingleCycleRTL.vcd"
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 7 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 7 )} 
+wvSetCursor -win $_nWave1 6864.792280 -snap {("G1" 9)}
+wvSetCursor -win $_nWave1 7058.598683 -snap {("G1" 9)}
+wvSetCursor -win $_nWave1 6848.641747 -snap {("G1" 9)}
+wvSetCursor -win $_nWave1 6848.641747 -snap {("G1" 9)}
+wvSelectSignal -win $_nWave1 {( "G1" 9 )} 
+wvSetPosition -win $_nWave1 {("G1" 9)}
+wvExpandBus -win $_nWave1 {("G1" 9)}
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvSetCursor -win $_nWave1 11903.758748 -snap {("G1" 16)}
+wvSetCursor -win $_nWave1 7042.448149 -snap {("G1" 6)}
+wvSetCursor -win $_nWave1 6961.695482 -snap {("G1" 5)}
+wvSetCursor -win $_nWave1 12097.565150 -snap {("G1" 9)}
+wvSetCursor -win $_nWave1 15085.413857 -snap {("G1" 7)}

@@ -1,15 +1,21 @@
 ncverilog: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s039: Started on May 08, 2018 at 00:04:21 CST
+TOOL:	ncverilog	15.20-s039: Started on May 08, 2018 at 16:12:01 CST
 ncverilog
 	+access+r
 	DSDHW3_tb.v
 	DSDHW3.v
 	HSs18n_128x32.v
 Recompiling... reason: file './DSDHW3.v' is newer than expected.
-	expected: Tue May  8 00:03:41 2018
-	actual:   Tue May  8 00:04:02 2018
+	expected: Tue May  8 15:33:04 2018
+	actual:   Tue May  8 16:11:57 2018
 file: DSDHW3.v
-	module worklib.SingleCycle_MIPS:v
+	module worklib.alu:v
+		errors: 0, warnings: 0
+	module worklib.control:v
+		errors: 0, warnings: 0
+	module worklib.ALU_control:v
+		errors: 0, warnings: 0
+	module worklib.register_file:v
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
@@ -18,8 +24,14 @@ file: DSDHW3.v
 ncelab: *W,MEMODR (./DSDHW3_tb.v,60|47): $readmem default memory order incompatible with IEEE1364.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.SingleCycle_MIPS:v <0x57cab49b>
-			streams:   7, words:  2760
+		worklib.ALU_control:v <0x5f5a6d89>
+			streams:   1, words:   574
+		worklib.alu:v <0x3a480c93>
+			streams:   1, words:   940
+		worklib.control:v <0x008675d6>
+			streams:   1, words:  3998
+		worklib.register_file:v <0x35ceb144>
+			streams:   4, words: 16952
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -34,7 +46,7 @@ ncelab: *W,MEMODR (./DSDHW3_tb.v,60|47): $readmem default memory order incompati
 		Always blocks:           11      11
 		Initial blocks:           2       2
 		Cont. assignments:        3       4
-		Pseudo assignments:       7       7
+		Pseudo assignments:       8       8
 		Timing checks:           85      44
 		Simulation timescale:  10ps
 	Writing initial simulation snapshot: worklib.SingleCycle_tb:v
@@ -42,42 +54,27 @@ Loading snapshot worklib.SingleCycle_tb:v .................... Done
 *Verdi* Loading libsscore_ius152.so
 ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
 ncsim> run
-Your lw instruction is incorrect! 
-     Expected IR_addr =  0,      Your IR_addr =          x
-Expected RF_writedata = 15, Your RF_writedata =          x
-Your lw instruction is incorrect! 
-     Expected IR_addr =  4,      Your IR_addr =          x
-Expected RF_writedata = 20, Your RF_writedata =          x
-Your add instruction is incorrect! 
-     Expected IR_addr =  8,      Your IR_addr =          x
-Expected RF_writedata = 30, Your RF_writedata =          x
-Your sub instruction is incorrect! 
-     Expected IR_addr = 12,      Your IR_addr =          x
-Expected RF_writedata = 10, Your RF_writedata =          x
-Your and instruction is incorrect! 
-     Expected IR_addr = 16,      Your IR_addr =          x
-Expected RF_writedata = 20, Your RF_writedata =          x
-Your or instruction is incorrect! 
-     Expected IR_addr = 24,      Your IR_addr =          x
-Expected RF_writedata = 30, Your RF_writedata =          x
+Your lw instruction is correct! 
+Your lw instruction is correct! 
+Your add instruction is correct! 
+Your sub instruction is correct! 
+Your and instruction is correct! 
+Your beq instruction is correct! 
+Your or instruction is correct! 
 Your slt instruction is incorrect! 
-     Expected IR_addr = 28,      Your IR_addr =          x
-Expected RF_writedata =  1, Your RF_writedata =          x
-Your sw instruction is incorrect! 
-     Expected IR_addr = 36,      Your IR_addr =          x
-Expected RF_writedata = 30, Your RF_writedata =          x
-Your jump instruction is incorrect! 
-     Expected IR_addr = 52,      Your IR_addr =          x
-Expected RF_writedata = 40, Your RF_writedata =          x
+     Expected IR_addr = 28,      Your IR_addr =         28
+Expected RF_writedata =  1, Your RF_writedata =         30
+Your sw instruction is correct! 
+Your jump instruction is correct! 
 Your jal instruction is incorrect! 
-     Expected IR_addr = 44,      Your IR_addr =          x
-Expected RF_writedata = 40, Your RF_writedata =          x
+     Expected IR_addr = 44,      Your IR_addr =         60
+Expected RF_writedata = 40, Your RF_writedata = 4294967256
 Your jr instruction is incorrect! 
-     Expected IR_addr = 60,      Your IR_addr =          x
+     Expected IR_addr = 60,      Your IR_addr =         68
 Your beq instruction is incorrect! 
-     Expected IR_addr = 72,      Your IR_addr =          x
-Expected RF_writedata = 80, Your RF_writedata =          x
+     Expected IR_addr = 72,      Your IR_addr =         72
+Expected RF_writedata = 80, Your RF_writedata =         60
 Simulation complete via $finish(1) at time 185 NS + 0
 ./DSDHW3_tb.v:226 		$finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s039: Exiting on May 08, 2018 at 00:04:21 CST  (total: 00:00:00)
+TOOL:	ncverilog	15.20-s039: Exiting on May 08, 2018 at 16:12:02 CST  (total: 00:00:01)

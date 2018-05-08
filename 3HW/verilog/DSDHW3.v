@@ -105,13 +105,14 @@ module SingleCycle_MIPS(
 //==== sequential part ====================================
     always@(*)begin
         //output
+        /*
         ReadData2=RD2;
         A=ALUresult_mem[8:2];
-        RF_writedata=0;
+        RF_writedata=WD;
         WEN=~MemWrite;
         OEN=1'b0;
         CEN=1'b0;
-        IR_addr=PC;
+        IR_addr=PC;*/
 
         //wire
         ALU_y=(ALUSrc ? { {16{IR[15]}} ,IR[15:0]} : RD2);
@@ -119,10 +120,20 @@ module SingleCycle_MIPS(
         WD=(MemToReg ? ReadDataMem : ALUresult_mem);
         PCplus4=PC+4;
         nextPC=Jump?{PCplus4[31:28],IR[25:0],2'b00}:((Branch & zero)? ({{14{IR[15]}},IR[15:0],2'b00}+PCplus4) :PCplus4 );
+	
+	//output
+	ReadData2=RD2;
+	A=ALUresult_mem[8:2];
+	RF_writedata=WD;
+	WEN=~MemWrite;
+	OEN=1'b0;
+	CEN=1'b0;
+	IR_addr=PC;
     end
     
-    always@(posedge clk) begin
-        PC<=nextPC;
+    always@(posedge clk or negedge rst_n) begin
+	if (rst_n==1'b0) PC <= 0;
+	else PC<=nextPC;
     end
 
 //=========================================================
@@ -143,28 +154,17 @@ module alu(
     output reg [31:0] out;
 
     always@(*) begin
-        case(ctrl)
-            4'b0000: out=x+y;
-            4'b0001: out=x-y;
-            4'b0010: out=x&y;
-            4'b0011: out=x|y;
-            4'b0100: out=~x;
-            4'b0101: out=x^y;
-            4'b0110: out=~(x|y);
-            4'b0111: out=y<<x[4:0];
-            4'b1000: out=y>>x[4:0];
-            4'b1001: out={x[31],x[31:1]};
-            4'b1010: out={x[30:0],x[31]};
-            4'b1011: out={x[0],x[31:1]};
-            4'b1100: out=(x==y)?1:0;
-            4'b1101: out=0;
-            4'b1110: out=0;
-            4'b1111: out=0;
+        case(ctrl) //synopsys full_case
+            4'b0010: out=x+y;
+            4'b0110: out=x-y;
+	    4'b0000: out=x&y;
+            4'b0001: out=x|y;
+            4'b0111: out=(x<y)?1:0;
         endcase
-        if (ctrl==4'b0001)
-            out=(x==y)?1:0;
+        if (ctrl==4'b0110)
+            zero=(x==y)?1:0;
         else
-            out=1'b0;
+            zero=1'b0;
     end
 endmodule
 
@@ -182,18 +182,21 @@ module control(
 );
 
     input [5:0] instruction;
-    output reg RegDST, Jump, Branch, MemToReg, MemWrite, ALUSrc, RegWrite;
+    output reg Branch, MemWrite, ALUSrc, RegWrite;
+    output reg [1:0] RegDST, Jump, MemToReg;
     output reg [1:0] ALUOp;
 
     always@(*) begin
         if (instruction==6'b000000)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp}=9'b10010010;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b100100100;
         else if (instruction==6'b100011)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp}=9'b01110000;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b011100000;
         else if (instruction==6'b101011)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp}=9'bx1x01000;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b010010000;
         else if (instruction==6'b000100)
-            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp}=9'bx0x00101;
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b000001010;
+        else if (instruction==6'b000010)
+            {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=9'b000000001;
     end
 
 endmodule
@@ -209,13 +212,26 @@ module ALU_control(
     output reg [3:0] ALUctrl;
 
     always@(*) begin
-        if ({ALUOp, instruction}==8'b00xxxxxx) ALUctrl=4'b0010;
-        else if ({ALUOp, instruction}==8'bx1xxxxxx) ALUctrl=4'b0110;
-        else if ({ALUOp, instruction}==8'b1xxx0000) ALUctrl=4'b0010;
-        else if ({ALUOp, instruction}==8'b1xxx0010) ALUctrl=4'b0110;
-        else if ({ALUOp, instruction}==8'b1xxx0100) ALUctrl=4'b0000;
-        else if ({ALUOp, instruction}==8'b1xxx0101) ALUctrl=4'b0001;
-        else if ({ALUOp, instruction}==8'b1xxx1010) ALUctrl=4'b1111;
+	case(ALUOp) //synopsys full_case
+	    2'b00: ALUctrl=4'b0010;
+	    2'b01: ALUctrl=4'b0110;
+	    2'b10: begin
+		    case(instruction[3:0]) //synopsys full_case
+		        4'b0000: ALUctrl=4'b0010;
+			4'b0010: ALUctrl=4'b0110;
+			4'b0100: ALUctrl=4'b0000;
+			4'b0101: ALUctrl=4'b0001;
+			4'b1010: ALUctrl=4'b1111;
+		    endcase
+                  end
+	endcase
+       /* if ({ALUOp, instruction}===8'b00xxxxxx) ALUctrl=4'b0010;
+        else if ({ALUOp, instruction}===8'bx1xxxxxx) ALUctrl=4'b0110;
+        else if ({ALUOp, instruction}===8'b1xxx0000) ALUctrl=4'b0010;
+        else if ({ALUOp, instruction}===8'b1xxx0010) ALUctrl=4'b0110;
+        else if ({ALUOp, instruction}===8'b1xxx0100) ALUctrl=4'b0000;
+        else if ({ALUOp, instruction}===8'b1xxx0101) ALUctrl=4'b0001;
+        else if ({ALUOp, instruction}===8'b1xxx1010) ALUctrl=4'b1111;*/
     end
 
 endmodule
