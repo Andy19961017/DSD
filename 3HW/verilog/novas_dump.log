@@ -21,18 +21,18 @@ LANG=zh_TW.UTF-8
 USER=b04067
 LOGNAME=b04067
 HOME=/home/raid7_2/userb04/b04067
-PATH=/usr/spring_soft/verdi/cur/bin:/usr/spring_soft/verdi/cur/nLint/bin:/usr/cad/cadence/EDI/cur/tools/celtic/bin:/usr/cad/cadence/EDI/cur/tools/plato/bin:/usr/cad/cadence/EDI/cur/tools/dfII/bin:/usr/cad/cadence/EDI/cur/tools/fe/bin:/usr/cad/cadence/EDI/cur/tools/cdsdoc/bin:/usr/cad/cadence/EDI/cur/tools/bin:/usr/cad/cadence/EDI/cur//tools/tlfUtil/bin:/usr/cad/cadence/RC/cur/tools/bin:/usr/cad/cadence/MMSIM/cur/tools/dfII/bin:/usr/cad/cadence/MMSIM/cur/tools/bin:/usr/cad/cadence/NEOCIRCUIT/cur/tools/NeoCircuit/bin:bin.linux:/usr/cad/cadence/SPB/cur/tools/specctra/bin:/usr/cad/cadence/SPB/cur/tools/pcb/bin:/usr/cad/cadence/SPB/cur/tools/dfII/bin:/usr/cad/cadence/SPB/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/vtools/vfault/bin:/usr/cad/cadence/INCISIV/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dracula/bin:/usr/cad/cadence/IC/cur/tools/bin:/usr/cad/cadence/EXT/cur/tools/bin:/usr/cad/cadence/ETS/cur/tools/bin:/usr/cad/cadence/CONFRML/cur/./bin:/usr/cad/cadence/CONFRML/cur/tools/bin:/usr/cad/cadence/CCD/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/assura/bin:/usr/cad/cadence/ASSURA/cur/tools/dsm/bin:/usr/cad/cadence/ASSURA/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/dfII/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/raid7_4/raid1_1/linux/novas/verdi/cur/bin
+PATH=/usr/bin/X11:/usr/cad/synopsys/coreConsultant/cur/bin:/usr/cad/synopsys/synthesis/cur/amd64/syn/bin:/usr/cad/synopsys/lc/cur/bin:/usr/spring_soft/verdi/cur/bin:/usr/spring_soft/verdi/cur/nLint/bin:/usr/cad/cadence/EDI/cur/tools/celtic/bin:/usr/cad/cadence/EDI/cur/tools/plato/bin:/usr/cad/cadence/EDI/cur/tools/dfII/bin:/usr/cad/cadence/EDI/cur/tools/fe/bin:/usr/cad/cadence/EDI/cur/tools/cdsdoc/bin:/usr/cad/cadence/EDI/cur/tools/bin:/usr/cad/cadence/EDI/cur//tools/tlfUtil/bin:/usr/cad/cadence/RC/cur/tools/bin:/usr/cad/cadence/MMSIM/cur/tools/dfII/bin:/usr/cad/cadence/MMSIM/cur/tools/bin:/usr/cad/cadence/NEOCIRCUIT/cur/tools/NeoCircuit/bin:bin.linux:/usr/cad/cadence/SPB/cur/tools/specctra/bin:/usr/cad/cadence/SPB/cur/tools/pcb/bin:/usr/cad/cadence/SPB/cur/tools/dfII/bin:/usr/cad/cadence/SPB/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/vtools/vfault/bin:/usr/cad/cadence/INCISIV/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dracula/bin:/usr/cad/cadence/IC/cur/tools/bin:/usr/cad/cadence/EXT/cur/tools/bin:/usr/cad/cadence/ETS/cur/tools/bin:/usr/cad/cadence/CONFRML/cur/./bin:/usr/cad/cadence/CONFRML/cur/tools/bin:/usr/cad/cadence/CCD/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/assura/bin:/usr/cad/cadence/ASSURA/cur/tools/dsm/bin:/usr/cad/cadence/ASSURA/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/dfII/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/raid7_4/raid1_1/linux/novas/verdi/cur/bin
 MAIL=/var/spool/mail/b04067
 SHELL=/bin/tcsh
-SSH_CLIENT=140.112.249.65 59400 22
-SSH_CONNECTION=140.112.249.65 59400 140.112.20.73 22
-SSH_TTY=/dev/pts/7
+SSH_CLIENT=140.112.249.65 65159 22
+SSH_CONNECTION=140.112.249.65 65159 140.112.20.73 22
+SSH_TTY=/dev/pts/0
 TERM=xterm-256color
-DISPLAY=localhost:14.0
+DISPLAY=localhost:10.0
 SELINUX_ROLE_REQUESTED=
 SELINUX_LEVEL_REQUESTED=
 SELINUX_USE_CURRENT_RANGE=
-XDG_SESSION_ID=22159
+XDG_SESSION_ID=24660
 XDG_RUNTIME_DIR=/run/user/1336
 HOSTTYPE=x86_64-linux
 VENDOR=unknown
@@ -54,7 +54,7 @@ QTLIB=/usr/lib64/qt-3.3/lib
 QT_GRAPHICSSYSTEM_CHECKED=1
 ASSURAHOME=/usr/cad/cadence/ASSURA/cur
 LD_LIBRARY_PATH=/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/xl_shared:/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/nc_shared:/home/raid7_4/raid1_1/linux/novas/verdi/cur/share/PLI/IUS/LINUX/
-LM_LICENSE_FILE=26585@lscic:5280@lscic:5280@lsnchu:5280@lscic:5280@lsnctu:
+LM_LICENSE_FILE=26585@lscic:5280@lscic:5280@lscic:5280@lsnctu:5280@lsntu:5280@lsncku:
 VERPLEX_HOME=/usr/cad/cadence/CONFRML/cur
 OAHOME=/usr/cad/cadence/EDI/cur/oa_v22.41.013
 OA_HOME=/usr/cad/cadence/EDI/cur/oa_v22.41.013
@@ -62,6 +62,9 @@ CDS_Netlisting_Mode=Analog
 NEOCKTHOME=/usr/cad/cadence/NEOCIRCUIT/cur/tools/NeoCircuit
 ENCOUNTER=/usr/cad/cadence/EDI/cur/tools/fe
 SHLIB_PATH=/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/xl_shared:/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/nc_shared
+SYNTHESIS=/usr/cad/synopsys/synthesis/cur
+SYN_MAN_DIR=/usr/cad/synopsys/synthesis/cur/doc/syn/man
+MANPATH=/usr/cad/synopsys/synthesis/cur/doc/syn/man
 _IRUNROOT_=/usr/cad/cadence/INCISIV/cur/tools
 CDS_ARCH=lnx86
 NCRUNMODE=ncverilog:./INCA_libs/irun.lnx86.15.20.nc
@@ -71,17 +74,18 @@ TCL_LIBRARY=/usr/cad/cadence/INCISIV/cur/tools/inca/files/tcl/library
 Runtime command line arguments:
 argv[0]=ncverilog
 argv[1]=+access+r
-argv[2]=DSDHW3_tb.v
-argv[3]=DSDHW3.v
+argv[2]=DSDHW3_tb_gate.v
+argv[3]=DSDHW3.vg
 argv[4]=HSs18n_128x32.v
-76 profile - 100
-          CPU/Mem usage: 0.040 sys,  0.040 user,  62.09M sys,  0.00M vm
-77 VC callback profile - scalar:0 vector:0
-78 Tue May  8 16:12:02 2018
-79 pliAppInit
-80 FSDB_GATE is disabled.
-81 Enable Parallel Dumping.
-82 pliAppMiscSet: New Sim Round
-83 pliEntryInit
-84 LIBSSCORE=found /home/raid7_4/raid1_1/linux/novas/verdi/cur/share/PLI/IUS/LINUX/libsscore_ius152.so through $LD_LIBRARY_PATH setting.
-85 Sim process exit
+argv[5]=tsmc13.v
+80 profile - 100
+          CPU/Mem usage: 0.070 sys,  0.050 user,  75.75M sys,  0.00M vm
+81 VC callback profile - scalar:0 vector:0
+82 Wed May  9 23:54:11 2018
+83 pliAppInit
+84 FSDB_GATE is disabled.
+85 Enable Parallel Dumping.
+86 pliAppMiscSet: New Sim Round
+87 pliEntryInit
+88 LIBSSCORE=found /home/raid7_4/raid1_1/linux/novas/verdi/cur/share/PLI/IUS/LINUX/libsscore_ius152.so through $LD_LIBRARY_PATH setting.
+89 Sim process exit

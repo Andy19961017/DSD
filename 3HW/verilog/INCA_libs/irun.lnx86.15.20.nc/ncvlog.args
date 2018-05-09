@@ -5,9 +5,10 @@
 -XLMODE
 ./INCA_libs/irun.lnx86.15.20.nc
 -RUNMODE
-DSDHW3_tb.v
-DSDHW3.v
+DSDHW3_tb_gate.v
+DSDHW3.vg
 HSs18n_128x32.v
+tsmc13.v
 -CDSLIB
 ./INCA_libs/irun.lnx86.15.20.nc/cdsrun.lib
 -HDLVAR

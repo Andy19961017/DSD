@@ -52,3 +52,21 @@ s51(08May2018:15:24:14):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32
 s52(08May2018:15:30:08):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
 s53(08May2018:15:33:06):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
 s54(08May2018:16:12:01):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s55(08May2018:17:29:19):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s56(08May2018:17:30:04):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s57(08May2018:17:30:54):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s58(08May2018:17:40:51):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s59(08May2018:20:17:39):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s60(09May2018:14:25:18):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s61(09May2018:15:16:45):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s62(09May2018:17:26:54):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s63(09May2018:23:24:08):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s64(09May2018:23:25:21):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s65(09May2018:23:25:24):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s66(09May2018:23:33:00):  ncverilog +access+r DSDHW3_tb.v DSDHW3.v HSs18n_128x32.v 
+s67(09May2018:23:46:01):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s68(09May2018:23:48:02):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s69(09May2018:23:48:53):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s70(09May2018:23:52:29):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s71(09May2018:23:53:46):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 
+s72(09May2018:23:54:08):  ncverilog +access+r DSDHW3_tb_gate.v DSDHW3.vg HSs18n_128x32.v tsmc13.v 

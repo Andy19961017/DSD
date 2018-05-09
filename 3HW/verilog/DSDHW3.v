@@ -54,8 +54,9 @@ module SingleCycle_MIPS(
 
 //==== reg/wire declaration ===============================
     wire [31:0] ALUresult_mem, RD1, RD2;
-    wire [1:0] ALUOp;
+    wire [1:0] ALUOp , RegDST, MemToReg, Jump;
     wire [3:0] ALUctrl;
+    wire Branch, MemWrite, ALUSrc, RegWrite, zero;
 
     reg [31:0] ALU_y, WD;
     reg [4:0] WR;
@@ -65,7 +66,7 @@ module SingleCycle_MIPS(
 //==== combinational part =================================
     control top_control(
         .instruction(IR[31:26]) ,
-        .func(IR[5:0])
+        .func(IR[5:0]) ,
         .RegDST(RegDST) ,
         .Jump(Jump) ,
         .Branch(Branch) ,
@@ -160,10 +161,10 @@ module alu(
             4'b0110: out=x-y;
 	    4'b0000: out=x&y;
             4'b0001: out=x|y;
-            4'b0111: out=(x<y)?1:0;
+            4'b0111: out=(x<y)? 31'b01:31'b0;
         endcase
         if (ctrl==4'b0110)
-            zero=(x==y)?1:0;
+            zero=(x==y)? 1'b1:0;
         else
             zero=1'b0;
     end
@@ -188,23 +189,26 @@ module control(
     output reg [1:0] ALUOp, RegDST, Jump, MemToReg;
 
     always@(*) begin
-        if (instruction==6'b000000) begin
+	case(instruction) //synopsys full_case
+		
+        6'b000000: begin
             if (func==6'b001000)
                 {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000000010;
             else
                 {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b010001001000;
         end
-        else if (instruction==6'b100011)
+        6'b100011:
             {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b001011000000;
-        else if (instruction==6'b101011)
+        6'b101011:
             {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b001000100000;
-        else if (instruction==6'b000100)
+        6'b000100:
             {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000010100;
-        else if (instruction==6'b000010)
+        6'b000010:
             {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b000000000001;
-        else if (instruction==6'b000011)
+        6'b000011:
             {RegDST, ALUSrc, MemToReg, RegWrite, MemWrite, Branch, ALUOp, Jump}=12'b100101000001;
-    end
+            endcase
+	end
 
 endmodule
 
@@ -228,7 +232,7 @@ module ALU_control(
 			4'b0010: ALUctrl=4'b0110;
 			4'b0100: ALUctrl=4'b0000;
 			4'b0101: ALUctrl=4'b0001;
-			4'b1010: ALUctrl=4'b1111;
+			4'b1010: ALUctrl=4'b0111;
 		    endcase
                   end
 	endcase

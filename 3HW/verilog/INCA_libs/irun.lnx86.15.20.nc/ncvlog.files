@@ -2,6 +2,7 @@
 // File created by:  ncverilog
 // Do not modify this file
 //
-/home/raid7_2/userb04/b04067/DSD/3HW/verilog/DSDHW3_tb.v
-/home/raid7_2/userb04/b04067/DSD/3HW/verilog/DSDHW3.v
+/home/raid7_2/userb04/b04067/DSD/3HW/verilog/DSDHW3_tb_gate.v
+/home/raid7_2/userb04/b04067/DSD/3HW/verilog/DSDHW3.vg
 /home/raid7_2/userb04/b04067/DSD/3HW/verilog/HSs18n_128x32.v
+/home/raid7_2/userb04/b04067/DSD/3HW/verilog/tsmc13.v
