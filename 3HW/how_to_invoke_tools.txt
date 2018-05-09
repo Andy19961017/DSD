@@ -28,7 +28,7 @@ at this moment you can try the whole commands one after one!
 [suggested synthesis script]  // iodelay should be (0.5*cycle)+1
 -------------------------------------------------------------------------------
 read_verilog DSDHW3.v
-set cycle  10
+set cycle  5
 set iodelay 6
 create_clock -name CLK -period $cycle [get_ports clk]
 set_dont_touch_network      [get_clocks CLK]
@@ -44,6 +44,7 @@ compile
 write_sdf -version 2.1 DSDHW3.sdf
 write -format verilog -hier -output DSDHW3.vg
 write -format ddc     -hier -output DSDHW3.ddc
+report_area
 -------------------------------------------------------------------------------
 
 
