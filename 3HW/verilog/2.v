@@ -154,10 +154,12 @@ module alu(
     input  [31:0] y;
     output reg  zero;
     output reg [31:0] out;
+    wire [31:0] add;
+module carry_lookahead(x, y, 0, add, CarryOut);
 
     always@(*) begin
         case(ctrl) //synopsys full_case
-            4'b0010: out=x+y;
+            4'b0010: out=add;
             4'b0110: out=x-y;
 	    4'b0000: out=x&y;
             4'b0001: out=x|y;
@@ -306,74 +308,8 @@ module register_file(
             r_w[i]=(demux[i] & WEN )?WD:r_r[i];
         end
         
-	case(RR1)
-1: RD1=r_r[1];
-2: RD1=r_r[2];
-3: RD1=r_r[3];
-4: RD1=r_r[4];
-5: RD1=r_r[5];
-6: RD1=r_r[6];
-7: RD1=r_r[7];
-8: RD1=r_r[8];
-9: RD1=r_r[9];
-10: RD1=r_r[10];
-11: RD1=r_r[11];
-12: RD1=r_r[12];
-13: RD1=r_r[13];
-14: RD1=r_r[14];
-15: RD1=r_r[15];
-16: RD1=r_r[16];
-17: RD1=r_r[17];
-18: RD1=r_r[18];
-19: RD1=r_r[19];
-20: RD1=r_r[20];
-21: RD1=r_r[21];
-22: RD1=r_r[22];
-23: RD1=r_r[23];
-24: RD1=r_r[24];
-25: RD1=r_r[25];
-26: RD1=r_r[26];
-27: RD1=r_r[27];
-28: RD1=r_r[28];
-29: RD1=r_r[29];
-30: RD1=r_r[30];
-31: RD1=r_r[31];
-	endcase
-    case(RR2)
-1: RD2=r_r[1];
-2: RD2=r_r[2];
-3: RD2=r_r[3];
-4: RD2=r_r[4];
-5: RD2=r_r[5];
-6: RD2=r_r[6];
-7: RD2=r_r[7];
-8: RD2=r_r[8];
-9: RD2=r_r[9];
-10: RD2=r_r[10];
-11: RD2=r_r[11];
-12: RD2=r_r[12];
-13: RD2=r_r[13];
-14: RD2=r_r[14];
-15: RD2=r_r[15];
-16: RD2=r_r[16];
-17: RD2=r_r[17];
-18: RD2=r_r[18];
-19: RD2=r_r[19];
-20: RD2=r_r[20];
-21: RD2=r_r[21];
-22: RD2=r_r[22];
-23: RD2=r_r[23];
-24: RD2=r_r[24];
-25: RD2=r_r[25];
-26: RD2=r_r[26];
-27: RD2=r_r[27];
-28: RD2=r_r[28];
-29: RD2=r_r[29];
-30: RD2=r_r[30];
-31: RD2=r_r[31];
-    endcase
-        //RD1=r_r[RR1];
-        //RD2=r_r[RR2];
+        RD1=r_r[RR1];
+        RD2=r_r[RR2];
         r_r[0]=32'b0;
     end
 
@@ -391,623 +327,67 @@ module register_file(
     end
 endmodule
 
-/*
-module register_file(
-    input [4:0] read_reg1,output [31:0] read_data1,
-    input [4:0] read_reg2,output [31:0] read_data2,
-    input clk,
-    input en_write,
-    input [4:0] write_reg,input [31:0] write_data
-);
-
- reg [31:0] registers[31:0];
- // 暫存器0永遠輸出0
- assign rd1 = (ra1 == 5'b00000) ? 32'h00000000 : registers[ra1];
- assign rd2 = (ra2 == 5'b00000) ? 32'h00000000 : registers[ra2];
- // 當en_write=1時，執行將wd寫入暫存器的動作
- always @(posedge clk)
- begin
-  if ( en_write )
-   registers[wa] <= wd;
- end
-
+`timescale 1ns / 1ps
+module carry_look_ahead_16bit(a,b, cin, sum,cout);
+input [15:0] a,b;
+input cin;
+output [15:0] sum;
+output cout;
+wire c1,c2,c3;
+ 
+carry_look_ahead_4bit cla1 (.a(a[3:0]), .b(b[3:0]), .cin(cin), .sum(sum[3:0]), .cout(c1));
+carry_look_ahead_4bit cla2 (.a(a[7:4]), .b(b[7:4]), .cin(c1), .sum(sum[7:4]), .cout(c2));
+carry_look_ahead_4bit cla3(.a(a[11:8]), .b(b[11:8]), .cin(c2), .sum(sum[11:8]), .cout(c3));
+carry_look_ahead_4bit cla4(.a(a[15:12]), .b(b[15:12]), .cin(c3), .sum(sum[15:12]), .cout(cout));
+ 
+endmodule
+ 
+////////////////////////////////////////////////////////
+//4-bit Carry Look Ahead Adder 
+////////////////////////////////////////////////////////
+ 
+module carry_look_ahead_4bit(a,b, cin, sum,cout);
+input [:0] a,b;
+input cin;
+output [3:0] sum;
+output cout;
+ 
+wire [3:0] p,g,c;
+ 
+assign p=a^b;//propagate
+assign g=a&b; //generate
+ 
+assign c[0]=cin;
+assign c[1]= g[0]|(p[0]&c[0]);
+assign c[2]= g[1] | (p[1]&g[0]) | p[1]&p[0]&c[0];
+assign c[3]= g[2] | (p[2]&g[1]) | p[2]&p[1]&g[0] | p[2]&p[1]&p[0]&c[0];
+assign cout= g[3] | (p[3]&g[2]) | p[3]&p[2]&g[1] | p[3]&p[2]&p[1]&p[0]&c[0];
+assign sum=p^c;
+ 
 endmodule
 
-
-module register_file(
-    Clk  ,
-    WEN  ,
-    RW   ,
-    busW ,
-    R1   ,
-    R2   ,
-    bus1 ,
-    bus2 ,
-    reset
-);
-input        Clk, WEN, reset;
-input  [4:0] RW, R1, R2;
-input  [31:0] busW;
-output reg [31:0] bus1, bus2;
- 
-// write your design here
-reg [31:0] r0_w, r1_w, r2_w, r3_w, r4_w, r5_w, r6_w, r7_w;
-reg [31:0] r8_w, r9_w, r10_w, r11_w, r12_w, r13_w, r14_w, r15_w;
-reg [31:0] r16_w, r17_w, r18_w, r19_w, r20_w, r21_w, r22_w, r23_w;
-reg [31:0] r24_w, r25_w, r26_w, r27_w, r28_w, r29_w, r30_w, r31_w;
-reg [31:0] r0_r, r1_r, r2_r, r3_r, r4_r, r5_r, r6_r, r7_r;
-reg [31:0] r8_r, r9_r, r10_r, r11_r, r12_r, r13_r, r14_r, r15_r;
-reg [31:0] r16_r, r17_r, r18_r, r19_r, r20_r, r21_r, r22_r, r23_r;
-reg [31:0] r24_r, r25_r, r26_r, r27_r, r28_r, r29_r, r30_r, r31_r;
-
+module carry_lookahead(p, g, CarryIn, c, CarryOut);
+    input [31:0] p, g;
+    input CarryIn;
+    output [31:0] c;
+    output CarryOut;
     
-always@(*) begin
-    //if (WEN==1'b1) begin
-        if (reset==1'b0) begin
-            r0_r=32'b00000000000000000000000000000000;
-            r1_r=32'b00000000000000000000000000000000;
-            r2_r=32'b00000000000000000000000000000000;
-            r3_r=32'b00000000000000000000000000000000;
-            r4_r=32'b00000000000000000000000000000000;
-            r5_r=32'b00000000000000000000000000000000;
-            r6_r=32'b00000000000000000000000000000000;
-            r7_r=32'b00000000000000000000000000000000;
-            r8_r=32'b00000000000000000000000000000000;
-            r9_r=32'b00000000000000000000000000000000;
-            r10_r=32'b00000000000000000000000000000000;
-            r11_r=32'b00000000000000000000000000000000;
-            r12_r=32'b00000000000000000000000000000000;
-            r13_r=32'b00000000000000000000000000000000;
-            r14_r=32'b00000000000000000000000000000000;
-            r15_r=32'b00000000000000000000000000000000;
-            r16_r=32'b00000000000000000000000000000000;
-            r17_r=32'b00000000000000000000000000000000;
-            r18_r=32'b00000000000000000000000000000000;
-            r19_r=32'b00000000000000000000000000000000;
-            r20_r=32'b00000000000000000000000000000000;
-            r21_r=32'b00000000000000000000000000000000;
-            r22_r=32'b00000000000000000000000000000000;
-            r23_r=32'b00000000000000000000000000000000;
-            r24_r=32'b00000000000000000000000000000000;
-            r25_r=32'b00000000000000000000000000000000;
-            r26_r=32'b00000000000000000000000000000000;
-            r27_r=32'b00000000000000000000000000000000;
-            r28_r=32'b00000000000000000000000000000000;
-            r29_r=32'b00000000000000000000000000000000;
-            r30_r=32'b00000000000000000000000000000000;
-            r31_r=32'b00000000000000000000000000000000;
-            case(RW)
-                5'b00000: begin 
-                            if (WEN==1'b1)  r0_w=busW;
-                            else r0_w=r0_r;
-                        end
-                5'b00001: begin 
-                            if (WEN==1'b1)  r1_w=busW;
-                            else r1_w=r1_r;
-                        end
-                5'b00010: begin 
-                            if (WEN==1'b1)  r2_w=busW;
-                            else r2_w=r2_r;
-                        end
-                5'b00011: begin 
-                            if (WEN==1'b1)  r3_w=busW;
-                            else r3_w=r3_r;
-                        end
-                5'b00100: begin 
-                            if (WEN==1'b1)  r4_w=busW;
-                            else r4_w=r4_r;
-                        end
-                5'b00101: begin 
-                            if (WEN==1'b1)  r5_w=busW;
-                            else r5_w=r5_r;
-                        end
-                5'b00110: begin 
-                            if (WEN==1'b1)  r6_w=busW;
-                            else r6_w=r6_r;
-                        end
-                5'b00111: begin 
-                            if (WEN==1'b1)  r7_w=busW;
-                            else r7_w=r7_r;
-                        end
-                5'b01000: begin 
-                            if (WEN==1'b1)  r8_w=busW;
-                            else r8_w=r8_r;
-                        end
-                5'b01001: begin 
-                            if (WEN==1'b1)  r9_w=busW;
-                            else r9_w=r9_r;
-                        end
-                5'b01010: begin 
-                            if (WEN==1'b1)  r10_w=busW;
-                            else r10_w=r10_r;
-                        end
-                5'b01011: begin 
-                            if (WEN==1'b1)  r11_w=busW;
-                            else r11_w=r11_r;
-                        end
-                5'b01100: begin 
-                            if (WEN==1'b1)  r12_w=busW;
-                            else r12_w=r12_r;
-                        end
-                5'b01101: begin 
-                            if (WEN==1'b1)  r13_w=busW;
-                            else r13_w=r13_r;
-                        end
-                5'b01110: begin 
-                            if (WEN==1'b1)  r14_w=busW;
-                            else r14_w=r14_r;
-                        end
-                5'b01111: begin 
-                            if (WEN==1'b1)  r15_w=busW;
-                            else r15_w=r15_r;
-                        end
-                5'b10000: begin 
-                            if (WEN==1'b1)  r16_w=busW;
-                            else r16_w=r16_r;
-                        end
-                5'b10001: begin 
-                            if (WEN==1'b1)  r17_w=busW;
-                            else r17_w=r17_r;
-                        end
-                5'b10010: begin 
-                            if (WEN==1'b1)  r18_w=busW;
-                            else r18_w=r18_r;
-                        end
-                5'b10011: begin 
-                            if (WEN==1'b1)  r19_w=busW;
-                            else r19_w=r19_r;
-                        end
-                5'b10100: begin 
-                            if (WEN==1'b1)  r20_w=busW;
-                            else r20_w=r20_r;
-                        end
-                5'b10101: begin 
-                            if (WEN==1'b1)  r21_w=busW;
-                            else r21_w=r21_r;
-                        end
-                5'b10110: begin 
-                            if (WEN==1'b1)  r22_w=busW;
-                            else r22_w=r22_r;
-                        end
-                5'b10111: begin 
-                            if (WEN==1'b1)  r23_w=busW;
-                            else r23_w=r23_r;
-                        end
-                5'b11000: begin 
-                            if (WEN==1'b1)  r24_w=busW;
-                            else r24_w=r24_r;
-                        end
-                5'b11001: begin 
-                            if (WEN==1'b1)  r25_w=busW;
-                            else r25_w=r25_r;
-                        end
-                5'b11010: begin 
-                            if (WEN==1'b1)  r26_w=busW;
-                            else r26_w=r26_r;
-                        end
-                5'b11011: begin 
-                            if (WEN==1'b1)  r27_w=busW;
-                            else r27_w=r27_r;
-                        end
-                5'b11100: begin 
-                            if (WEN==1'b1)  r28_w=busW;
-                            else r28_w=r28_r;
-                        end
-                5'b11101: begin 
-                            if (WEN==1'b1)  r29_w=busW;
-                            else r29_w=r29_r;
-                        end
-                5'b11110: begin 
-                            if (WEN==1'b1)  r30_w=busW;
-                            else r30_w=r30_r;
-                        end
-                5'b11111: begin 
-                            if (WEN==1'b1)  r31_w=busW;
-                            else r31_w=r31_r;
-                        end
-            endcase
+    genvar i;
+    generate
+    for(i=0; i<31; i++)
+        begin: CarryLookAhead
+            cal_carry myCarry(p[i], g[i], c[i], c[i+1]);
         end
-    //end
-    case(R1)
-        5'b00000: busX=r0_r;
-        5'b00001: busX=r1_r;
-        5'b00010: busX=r2_r;
-        5'b00011: busX=r3_r;
-        5'b00100: busX=r4_r;
-        5'b00101: busX=r5_r;
-        5'b00110: busX=r6_r;
-        5'b00111: busX=r7_r;
-        5'b01000: busX=r8_r;
-        5'b01001: busX=r9_r;
-        5'b01010: busX=r10_r;
-        5'b01011: busX=r11_r;
-        5'b01100: busX=r12_r;
-        5'b01101: busX=r13_r;
-        5'b01110: busX=r14_r;
-        5'b01111: busX=r15_r;        
-        5'b10000: busX=r16_r;
-        5'b10001: busX=r17_r;
-        5'b10010: busX=r18_r;
-        5'b10011: busX=r19_r;
-        5'b10100: busX=r20_r;
-        5'b10101: busX=r21_r;
-        5'b10110: busX=r22_r;
-        5'b10111: busX=r23_r;
-        5'b11000: busX=r24_r;
-        5'b11001: busX=r25_r;
-        5'b11010: busX=r26_r;
-        5'b11011: busX=r27_r;
-        5'b11100: busX=r28_r;
-        5'b11101: busX=r29_r;
-        5'b11110: busX=r30_r;
-        5'b11111: busX=r31_r;
-    endcase
-    case(R2)
-        5'b00000: busY=r0_r;
-        5'b00001: busY=r1_r;
-        5'b00010: busY=r2_r;
-        5'b00011: busY=r3_r;
-        5'b00100: busY=r4_r;
-        5'b00101: busY=r5_r;
-        5'b00110: busY=r6_r;
-        5'b00111: busY=r7_r;
-        5'b01000: busY=r8_r;
-        5'b01001: busY=r9_r;
-        5'b01010: busY=r10_r;
-        5'b01011: busY=r11_r;
-        5'b01100: busY=r12_r;
-        5'b01101: busY=r13_r;
-        5'b01110: busY=r14_r;
-        5'b01111: busY=r15_r;        
-        5'b10000: busY=r16_r;
-        5'b10001: busY=r17_r;
-        5'b10010: busY=r18_r;
-        5'b10011: busY=r19_r;
-        5'b10100: busY=r20_r;
-        5'b10101: busY=r21_r;
-        5'b10110: busY=r22_r;
-        5'b10111: busY=r23_r;
-        5'b11000: busY=r24_r;
-        5'b11001: busY=r25_r;
-        5'b11010: busY=r26_r;
-        5'b11011: busY=r27_r;
-        5'b11100: busY=r28_r;
-        5'b11101: busY=r29_r;
-        5'b11110: busY=r30_r;
-        5'b11111: busY=r31_r;
-    endcase
-end
-
-always@(posedge Clk) begin
-    r0_r<=8'b00000000;
-    r1_r<=r1_w;
-    r2_r<=r2_w;
-    r3_r<=r3_w;
-    r4_r<=r4_w;
-    r5_r<=r5_w;
-    r6_r<=r6_w;
-    r7_r<=r7_w;
-    r8_r<=r8_w;
-    r9_r<=r9_w;
-    r10_r<=r10_w;
-    r11_r<=r11_w;
-    r12_r<=r12_w;
-    r13_r<=r13_w;
-    r14_r<=r14_w;
-    r15_r<=r15_w;
-    r16_r<=r16_w;
-    r17_r<=r17_w;
-    r18_r<=r18_w;
-    r19_r<=r19_w;
-    r20_r<=r20_w;
-    r21_r<=r21_w;
-    r22_r<=r22_w;
-    r23_r<=r23_w;
-    r24_r<=r24_w;
-    r25_r<=r25_w;
-    r26_r<=r26_w;
-    r27_r<=r27_w;
-    r28_r<=r28_w;
-    r29_r<=r29_w;
-    r30_r<=r30_w;
-    r31_r<=r31_w;
-end 
-
+    endgenerate
+    cal_carry myCarry31(p[31], g[31], c[31], CarryOut);
 endmodule
 
-module register_file(
-    Clk  ,
-    WEN  ,
-    RW   ,
-    busW ,
-    R1   ,
-    R2   ,
-    bus1 ,
-    bus2 ,
-    reset
-);
-input        Clk, WEN, reset;
-input  [4:0] RW, R1, R2;
-input  [31:0] busW;
-output reg [31:0] bus1, bus2;
- 
-// write your design here
-reg [31:0] r_w[0:31];
-reg [31:0] r_r[0:31];
-
+module cal_carry(p, g, cin, cout);
+    input p, g, cin;
+    output cout;
     
-always@(*) begin
-    //if (WEN==1'b1) begin
-        if (reset==1'b0) begin
-            r0_r=32'b00000000000000000000000000000000;
-            r1_r=32'b00000000000000000000000000000000;
-            r2_r=32'b00000000000000000000000000000000;
-            r3_r=32'b00000000000000000000000000000000;
-            r4_r=32'b00000000000000000000000000000000;
-            r5_r=32'b00000000000000000000000000000000;
-            r6_r=32'b00000000000000000000000000000000;
-            r7_r=32'b00000000000000000000000000000000;
-            r8_r=32'b00000000000000000000000000000000;
-            r9_r=32'b00000000000000000000000000000000;
-            r10_r=32'b00000000000000000000000000000000;
-            r11_r=32'b00000000000000000000000000000000;
-            r12_r=32'b00000000000000000000000000000000;
-            r13_r=32'b00000000000000000000000000000000;
-            r14_r=32'b00000000000000000000000000000000;
-            r15_r=32'b00000000000000000000000000000000;
-            r16_r=32'b00000000000000000000000000000000;
-            r17_r=32'b00000000000000000000000000000000;
-            r18_r=32'b00000000000000000000000000000000;
-            r19_r=32'b00000000000000000000000000000000;
-            r20_r=32'b00000000000000000000000000000000;
-            r21_r=32'b00000000000000000000000000000000;
-            r22_r=32'b00000000000000000000000000000000;
-            r23_r=32'b00000000000000000000000000000000;
-            r24_r=32'b00000000000000000000000000000000;
-            r25_r=32'b00000000000000000000000000000000;
-            r26_r=32'b00000000000000000000000000000000;
-            r27_r=32'b00000000000000000000000000000000;
-            r28_r=32'b00000000000000000000000000000000;
-            r29_r=32'b00000000000000000000000000000000;
-            r30_r=32'b00000000000000000000000000000000;
-            r31_r=32'b00000000000000000000000000000000;
-            case(RW)
-                5'b00000: begin 
-                            if (WEN==1'b1)  r0_w=busW;
-                            else r0_w=r0_r;
-                        end
-                5'b00001: begin 
-                            if (WEN==1'b1)  r1_w=busW;
-                            else r1_w=r1_r;
-                        end
-                5'b00010: begin 
-                            if (WEN==1'b1)  r2_w=busW;
-                            else r2_w=r2_r;
-                        end
-                5'b00011: begin 
-                            if (WEN==1'b1)  r3_w=busW;
-                            else r3_w=r3_r;
-                        end
-                5'b00100: begin 
-                            if (WEN==1'b1)  r4_w=busW;
-                            else r4_w=r4_r;
-                        end
-                5'b00101: begin 
-                            if (WEN==1'b1)  r5_w=busW;
-                            else r5_w=r5_r;
-                        end
-                5'b00110: begin 
-                            if (WEN==1'b1)  r6_w=busW;
-                            else r6_w=r6_r;
-                        end
-                5'b00111: begin 
-                            if (WEN==1'b1)  r7_w=busW;
-                            else r7_w=r7_r;
-                        end
-                5'b01000: begin 
-                            if (WEN==1'b1)  r8_w=busW;
-                            else r8_w=r8_r;
-                        end
-                5'b01001: begin 
-                            if (WEN==1'b1)  r9_w=busW;
-                            else r9_w=r9_r;
-                        end
-                5'b01010: begin 
-                            if (WEN==1'b1)  r10_w=busW;
-                            else r10_w=r10_r;
-                        end
-                5'b01011: begin 
-                            if (WEN==1'b1)  r11_w=busW;
-                            else r11_w=r11_r;
-                        end
-                5'b01100: begin 
-                            if (WEN==1'b1)  r12_w=busW;
-                            else r12_w=r12_r;
-                        end
-                5'b01101: begin 
-                            if (WEN==1'b1)  r13_w=busW;
-                            else r13_w=r13_r;
-                        end
-                5'b01110: begin 
-                            if (WEN==1'b1)  r14_w=busW;
-                            else r14_w=r14_r;
-                        end
-                5'b01111: begin 
-                            if (WEN==1'b1)  r15_w=busW;
-                            else r15_w=r15_r;
-                        end
-                5'b10000: begin 
-                            if (WEN==1'b1)  r16_w=busW;
-                            else r16_w=r16_r;
-                        end
-                5'b10001: begin 
-                            if (WEN==1'b1)  r17_w=busW;
-                            else r17_w=r17_r;
-                        end
-                5'b10010: begin 
-                            if (WEN==1'b1)  r18_w=busW;
-                            else r18_w=r18_r;
-                        end
-                5'b10011: begin 
-                            if (WEN==1'b1)  r19_w=busW;
-                            else r19_w=r19_r;
-                        end
-                5'b10100: begin 
-                            if (WEN==1'b1)  r20_w=busW;
-                            else r20_w=r20_r;
-                        end
-                5'b10101: begin 
-                            if (WEN==1'b1)  r21_w=busW;
-                            else r21_w=r21_r;
-                        end
-                5'b10110: begin 
-                            if (WEN==1'b1)  r22_w=busW;
-                            else r22_w=r22_r;
-                        end
-                5'b10111: begin 
-                            if (WEN==1'b1)  r23_w=busW;
-                            else r23_w=r23_r;
-                        end
-                5'b11000: begin 
-                            if (WEN==1'b1)  r24_w=busW;
-                            else r24_w=r24_r;
-                        end
-                5'b11001: begin 
-                            if (WEN==1'b1)  r25_w=busW;
-                            else r25_w=r25_r;
-                        end
-                5'b11010: begin 
-                            if (WEN==1'b1)  r26_w=busW;
-                            else r26_w=r26_r;
-                        end
-                5'b11011: begin 
-                            if (WEN==1'b1)  r27_w=busW;
-                            else r27_w=r27_r;
-                        end
-                5'b11100: begin 
-                            if (WEN==1'b1)  r28_w=busW;
-                            else r28_w=r28_r;
-                        end
-                5'b11101: begin 
-                            if (WEN==1'b1)  r29_w=busW;
-                            else r29_w=r29_r;
-                        end
-                5'b11110: begin 
-                            if (WEN==1'b1)  r30_w=busW;
-                            else r30_w=r30_r;
-                        end
-                5'b11111: begin 
-                            if (WEN==1'b1)  r31_w=busW;
-                            else r31_w=r31_r;
-                        end
-            endcase
-        end
-    //end
-    case(R1)
-        5'b00000: busX=r0_r;
-        5'b00001: busX=r1_r;
-        5'b00010: busX=r2_r;
-        5'b00011: busX=r3_r;
-        5'b00100: busX=r4_r;
-        5'b00101: busX=r5_r;
-        5'b00110: busX=r6_r;
-        5'b00111: busX=r7_r;
-        5'b01000: busX=r8_r;
-        5'b01001: busX=r9_r;
-        5'b01010: busX=r10_r;
-        5'b01011: busX=r11_r;
-        5'b01100: busX=r12_r;
-        5'b01101: busX=r13_r;
-        5'b01110: busX=r14_r;
-        5'b01111: busX=r15_r;        
-        5'b10000: busX=r16_r;
-        5'b10001: busX=r17_r;
-        5'b10010: busX=r18_r;
-        5'b10011: busX=r19_r;
-        5'b10100: busX=r20_r;
-        5'b10101: busX=r21_r;
-        5'b10110: busX=r22_r;
-        5'b10111: busX=r23_r;
-        5'b11000: busX=r24_r;
-        5'b11001: busX=r25_r;
-        5'b11010: busX=r26_r;
-        5'b11011: busX=r27_r;
-        5'b11100: busX=r28_r;
-        5'b11101: busX=r29_r;
-        5'b11110: busX=r30_r;
-        5'b11111: busX=r31_r;
-    endcase
-    case(R2)
-        5'b00000: busY=r0_r;
-        5'b00001: busY=r1_r;
-        5'b00010: busY=r2_r;
-        5'b00011: busY=r3_r;
-        5'b00100: busY=r4_r;
-        5'b00101: busY=r5_r;
-        5'b00110: busY=r6_r;
-        5'b00111: busY=r7_r;
-        5'b01000: busY=r8_r;
-        5'b01001: busY=r9_r;
-        5'b01010: busY=r10_r;
-        5'b01011: busY=r11_r;
-        5'b01100: busY=r12_r;
-        5'b01101: busY=r13_r;
-        5'b01110: busY=r14_r;
-        5'b01111: busY=r15_r;        
-        5'b10000: busY=r16_r;
-        5'b10001: busY=r17_r;
-        5'b10010: busY=r18_r;
-        5'b10011: busY=r19_r;
-        5'b10100: busY=r20_r;
-        5'b10101: busY=r21_r;
-        5'b10110: busY=r22_r;
-        5'b10111: busY=r23_r;
-        5'b11000: busY=r24_r;
-        5'b11001: busY=r25_r;
-        5'b11010: busY=r26_r;
-        5'b11011: busY=r27_r;
-        5'b11100: busY=r28_r;
-        5'b11101: busY=r29_r;
-        5'b11110: busY=r30_r;
-        5'b11111: busY=r31_r;
-    endcase
-end
-
-always@(posedge Clk) begin
-    r0_r<=8'b00000000;
-    r1_r<=r1_w;
-    r2_r<=r2_w;
-    r3_r<=r3_w;
-    r4_r<=r4_w;
-    r5_r<=r5_w;
-    r6_r<=r6_w;
-    r7_r<=r7_w;
-    r8_r<=r8_w;
-    r9_r<=r9_w;
-    r10_r<=r10_w;
-    r11_r<=r11_w;
-    r12_r<=r12_w;
-    r13_r<=r13_w;
-    r14_r<=r14_w;
-    r15_r<=r15_w;
-    r16_r<=r16_w;
-    r17_r<=r17_w;
-    r18_r<=r18_w;
-    r19_r<=r19_w;
-    r20_r<=r20_w;
-    r21_r<=r21_w;
-    r22_r<=r22_w;
-    r23_r<=r23_w;
-    r24_r<=r24_w;
-    r25_r<=r25_w;
-    r26_r<=r26_w;
-    r27_r<=r27_w;
-    r28_r<=r28_w;
-    r29_r<=r29_w;
-    r30_r<=r30_w;
-    r31_r<=r31_w;
-end 
-
-endmodule*/
-
-
+    wire temp;
+    
+    and and0(temp, p, c);
+    or  or0(cout, temp, g);
+endmodule
