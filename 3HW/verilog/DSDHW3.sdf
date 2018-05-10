@@ -1,7 +1,7 @@
 (DELAYFILE
 (SDFVERSION "OVI 2.1")
 (DESIGN "SingleCycle_MIPS")
-(DATE "Thu May 10 19:29:13 2018")
+(DATE "Thu May 10 22:43:16 2018")
 (VENDOR "typical")
 (PROGRAM "Synopsys Design Compiler cmos")
 (VERSION "N-2017.09-SP2")

@@ -1,16 +1,22 @@
 ncverilog: 15.20-s039: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
-TOOL:	ncverilog	15.20-s039: Started on May 10, 2018 at 19:30:30 CST
+TOOL:	ncverilog	15.20-s039: Started on May 10, 2018 at 22:43:37 CST
 ncverilog
 	+access+r
 	DSDHW3_tb_gate.v
 	DSDHW3.vg
 	HSs18n_128x32.v
 	tsmc13.v
-Recompiling... reason: file './DSDHW3_tb_gate.v' is newer than expected.
-	expected: Thu May 10 19:29:58 2018
-	actual:   Thu May 10 19:30:26 2018
-file: DSDHW3_tb_gate.v
-	module worklib.SingleCycle_tb:v
+Recompiling... reason: file './DSDHW3.sdf' is newer than expected.
+	expected: Thu May 10 22:41:44 2018
+	actual:   Thu May 10 22:43:16 2018
+file: DSDHW3.vg
+	module worklib.register_file:vg
+		errors: 0, warnings: 0
+	module worklib.SingleCycle_MIPS_DW01_add_0:vg
+		errors: 0, warnings: 0
+	module worklib.SingleCycle_MIPS_DW01_add_1:vg
+		errors: 0, warnings: 0
+	module worklib.SingleCycle_MIPS:vg
 		errors: 0, warnings: 0
 		Caching library 'worklib' ....... Done
 	Elaborating the design hierarchy:
@@ -203,6 +209,9 @@ ncelab: *W,CUVWSP (./DSDHW3.vg,6493|19): 1 output port was not connected:
 ncelab: (./tsmc13.v,18240): QN
 
 	Reading SDF file from location "DSDHW3.sdf"
+	Compiled SDF file "DSDHW3.sdf.X" older than source SDF file "DSDHW3.sdf".
+	Recompiling.
+	Writing compiled SDF file to "DSDHW3.sdf.X".
 	Annotating SDF timing data:
 		Compiled SDF file:     DSDHW3.sdf.X
 		Log file:              
@@ -1002,8 +1011,10 @@ ncelab: *W,SDFNCAP (./DSDHW3.vg,1204|7): The interconnect source SingleCycle_tb.
 ncelab: *W,MEMODR (./DSDHW3_tb_gate.v,60|47): $readmem default memory order incompatible with IEEE1364.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.SingleCycle_tb:v <0x2110c216>
-			streams:   5, words: 28498
+		worklib.SingleCycle_MIPS:vg <0x2a182289>
+			streams:   2, words:   282
+		worklib.register_file:vg <0x190f9698>
+			streams:   0, words:     0
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -1052,4 +1063,4 @@ Your beq instruction is correct!
 Simulation complete via $finish(1) at time 101750 PS + 0
 ./DSDHW3_tb_gate.v:225 		$finish;
 ncsim> exit
-TOOL:	ncverilog	15.20-s039: Exiting on May 10, 2018 at 19:30:33 CST  (total: 00:00:03)
+TOOL:	ncverilog	15.20-s039: Exiting on May 10, 2018 at 22:43:40 CST  (total: 00:00:03)

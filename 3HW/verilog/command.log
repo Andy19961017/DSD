@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version N-2017.09-SP2 for linux64 -- Nov 27, 2017
-#@ # Date:   Thu May 10 19:28:36 2018
+#@ # Date:   Thu May 10 22:42:39 2018
 #@ # Run by: b04067@cad30
 #@ 
 
@@ -6631,4 +6631,5 @@ write_sdf -version 2.1 DSDHW3.sdf
 write -format verilog -hier -output DSDHW3.vg
 write -format ddc     -hier -output DSDHW3.ddc
 report_timing
-report_area
+report_a
+report_ar
