@@ -24,15 +24,15 @@ HOME=/home/raid7_2/userb04/b04067
 PATH=/usr/bin/X11:/usr/cad/synopsys/coreConsultant/cur/bin:/usr/cad/synopsys/synthesis/cur/amd64/syn/bin:/usr/cad/synopsys/lc/cur/bin:/usr/spring_soft/verdi/cur/bin:/usr/spring_soft/verdi/cur/nLint/bin:/usr/cad/cadence/EDI/cur/tools/celtic/bin:/usr/cad/cadence/EDI/cur/tools/plato/bin:/usr/cad/cadence/EDI/cur/tools/dfII/bin:/usr/cad/cadence/EDI/cur/tools/fe/bin:/usr/cad/cadence/EDI/cur/tools/cdsdoc/bin:/usr/cad/cadence/EDI/cur/tools/bin:/usr/cad/cadence/EDI/cur//tools/tlfUtil/bin:/usr/cad/cadence/RC/cur/tools/bin:/usr/cad/cadence/MMSIM/cur/tools/dfII/bin:/usr/cad/cadence/MMSIM/cur/tools/bin:/usr/cad/cadence/NEOCIRCUIT/cur/tools/NeoCircuit/bin:bin.linux:/usr/cad/cadence/SPB/cur/tools/specctra/bin:/usr/cad/cadence/SPB/cur/tools/pcb/bin:/usr/cad/cadence/SPB/cur/tools/dfII/bin:/usr/cad/cadence/SPB/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/vtools/vfault/bin:/usr/cad/cadence/INCISIV/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dfII/bin:/usr/cad/cadence/IC/cur/tools/dracula/bin:/usr/cad/cadence/IC/cur/tools/bin:/usr/cad/cadence/EXT/cur/tools/bin:/usr/cad/cadence/ETS/cur/tools/bin:/usr/cad/cadence/CONFRML/cur/./bin:/usr/cad/cadence/CONFRML/cur/tools/bin:/usr/cad/cadence/CCD/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/assura/bin:/usr/cad/cadence/ASSURA/cur/tools/dsm/bin:/usr/cad/cadence/ASSURA/cur/tools/bin:/usr/cad/cadence/ASSURA/cur/tools/dfII/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/raid7_4/raid1_1/linux/novas/verdi/cur/bin
 MAIL=/var/spool/mail/b04067
 SHELL=/bin/tcsh
-SSH_CLIENT=140.112.249.65 65159 22
-SSH_CONNECTION=140.112.249.65 65159 140.112.20.73 22
-SSH_TTY=/dev/pts/0
+SSH_CLIENT=140.112.4.192 52880 22
+SSH_CONNECTION=140.112.4.192 52880 140.112.20.73 22
+SSH_TTY=/dev/pts/1
 TERM=xterm-256color
-DISPLAY=localhost:10.0
+DISPLAY=localhost:11.0
 SELINUX_ROLE_REQUESTED=
 SELINUX_LEVEL_REQUESTED=
 SELINUX_USE_CURRENT_RANGE=
-XDG_SESSION_ID=24660
+XDG_SESSION_ID=26136
 XDG_RUNTIME_DIR=/run/user/1336
 HOSTTYPE=x86_64-linux
 VENDOR=unknown
@@ -42,7 +42,7 @@ SHLVL=1
 PWD=/home/raid7_2/userb04/b04067/DSD/3HW/verilog
 GROUP=user
 HOST=cad30
-REMOTEHOST=207-2.m7.ntu.edu.tw
+REMOTEHOST=140.112.4.192
 HOSTNAME=cad30
 LS_COLORS=rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=05;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
 KDEDIRS=/usr
@@ -54,7 +54,7 @@ QTLIB=/usr/lib64/qt-3.3/lib
 QT_GRAPHICSSYSTEM_CHECKED=1
 ASSURAHOME=/usr/cad/cadence/ASSURA/cur
 LD_LIBRARY_PATH=/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/xl_shared:/usr/spring_soft/verdi/cur/share/PLI/nc_xl/LINUX/nc_shared:/home/raid7_4/raid1_1/linux/novas/verdi/cur/share/PLI/IUS/LINUX/
-LM_LICENSE_FILE=26585@lscic:5280@lscic:5280@lscic:5280@lsnctu:5280@lsntu:5280@lsncku:
+LM_LICENSE_FILE=26585@lscic:5280@lscic:5280@lsnchu:5280@lscic:
 VERPLEX_HOME=/usr/cad/cadence/CONFRML/cur
 OAHOME=/usr/cad/cadence/EDI/cur/oa_v22.41.013
 OA_HOME=/usr/cad/cadence/EDI/cur/oa_v22.41.013
@@ -79,9 +79,9 @@ argv[3]=DSDHW3.vg
 argv[4]=HSs18n_128x32.v
 argv[5]=tsmc13.v
 80 profile - 100
-          CPU/Mem usage: 0.070 sys,  0.050 user,  75.75M sys,  0.00M vm
+          CPU/Mem usage: 0.070 sys,  0.060 user,  75.58M sys,  0.00M vm
 81 VC callback profile - scalar:0 vector:0
-82 Wed May  9 23:54:11 2018
+82 Thu May 10 19:30:33 2018
 83 pliAppInit
 84 FSDB_GATE is disabled.
 85 Enable Parallel Dumping.

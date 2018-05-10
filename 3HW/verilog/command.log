@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version N-2017.09-SP2 for linux64 -- Nov 27, 2017
-#@ # Date:   Thu May 10 00:06:55 2018
+#@ # Date:   Thu May 10 19:28:36 2018
 #@ # Run by: b04067@cad30
 #@ 
 
@@ -6614,7 +6614,7 @@ source /home/raid7_2/userb04/b04067/DSD/3HW/verilog/.synopsys_dc.setup
 #@ # -- End source /home/raid7_2/userb04/b04067/DSD/3HW/verilog/.synopsys_dc.setup
 
 read_verilog DSDHW3.v
-set cycle  6
+set cycle  10
 set iodelay 6
 create_clock -name CLK -period $cycle [get_ports clk]
 set_dont_touch_network      [get_clocks CLK]
@@ -6631,3 +6631,4 @@ write_sdf -version 2.1 DSDHW3.sdf
 write -format verilog -hier -output DSDHW3.vg
 write -format ddc     -hier -output DSDHW3.ddc
 report_timing
+report_area
