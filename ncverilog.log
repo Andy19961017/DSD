@@ -1,9 +1,0 @@
-ncverilog: 10.20-s114: (c) Copyright 1995-2012 Cadence Design Systems, Inc.
-TOOL:	ncverilog	10.20-s114: Started on Mar 27, 2018 at 22:41:15 CST
-ncverilog
-	adder_gate_test.v
-	adder_gate.v
-	+access+r
-ncverilog: *E,FILEMIS: Cannot find the provided file adder_gate_test.v.
-ncverilog: *E,FILEMIS: Cannot find the provided file adder_gate.v.
-TOOL:	ncverilog	10.20-s114: Exiting on Mar 27, 2018 at 22:41:15 CST  (total: 00:00:00)
