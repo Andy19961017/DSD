@@ -62,6 +62,8 @@ module tb_cache;
     initial begin
         $fsdbDumpfile( "cache.fsdb" );
         $fsdbDumpvars;
+	$dumpfile("test.vcd");
+	$dumpvars;
     end
     
     // abort if the design cannot halt

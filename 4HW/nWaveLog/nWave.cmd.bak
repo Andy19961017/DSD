@@ -1,0 +1,94 @@
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 {/home/raid7_2/userb04/b04067/4HW/cache.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/tb_cache"
+wvGetSignalSetScope -win $_nWave1 "/tb_cache/u_cache"
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/tb_cache/u_cache/rh\[31:0\]} \
+{/tb_cache/u_cache/rm\[31:0\]} \
+{/tb_cache/u_cache/wh\[31:0\]} \
+{/tb_cache/u_cache/wm\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 )} 
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/tb_cache/u_cache/rh\[31:0\]} \
+{/tb_cache/u_cache/rm\[31:0\]} \
+{/tb_cache/u_cache/wh\[31:0\]} \
+{/tb_cache/u_cache/wm\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 )} 
+wvSetPosition -win $_nWave1 {("G1" 4)}
+wvGetSignalClose -win $_nWave1
+wvSetCursor -win $_nWave1 4022795.079787
+wvZoom -win $_nWave1 282301.206851 512493.071809
+wvZoom -win $_nWave1 0.000000 4458138.656915
+wvZoom -win $_nWave1 3796857.273936 5086355.970745
+wvZoom -win $_nWave1 0.000000 5083658.274726
+wvZoom -win $_nWave1 920283.257979 1223370.558511
+wvZoom -win $_nWave1 958858.005319 991922.074468
+wvZoom -win $_nWave1 965636.831212 966639.820757
+wvZoom -win $_nWave1 115724.242021 5113909.361702
+wvZoom -win $_nWave1 4860418.164894 5103452.907477
+wvZoom -win $_nWave1 0.000000 5180037.500000
+wvZoom -win $_nWave1 5086355.970745 5169200.601464
+wvZoom -win $_nWave1 5121192.311277 5133757.657986
+wvSetCursor -win $_nWave1 5118957.887699 -snap {("G2" 0)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/tb_cache"
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/tb_cache/u_cache/rh\[31:0\]} \
+{/tb_cache/u_cache/rm\[31:0\]} \
+{/tb_cache/u_cache/wh\[31:0\]} \
+{/tb_cache/u_cache/wm\[31:0\]} \
+{/tb_cache/sr\[31:0\]} \
+{/tb_cache/sw\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 5 6 )} 
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/tb_cache/u_cache/rh\[31:0\]} \
+{/tb_cache/u_cache/rm\[31:0\]} \
+{/tb_cache/u_cache/wh\[31:0\]} \
+{/tb_cache/u_cache/wm\[31:0\]} \
+{/tb_cache/sr\[31:0\]} \
+{/tb_cache/sw\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 5 6 )} 
+wvSetPosition -win $_nWave1 {("G1" 6)}
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvZoom -win $_nWave1 0.000000 5133731.370650
+wvZoom -win $_nWave1 5108398.683511 5122991.346862
+wvZoom -win $_nWave1 303087.300532 5122960.818277
+wvZoom -win $_nWave1 5058802.579787 5112877.400876
+wvZoom -win $_nWave1 4915524.946809 5180037.500000
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvZoom -win $_nWave1 44085.425532 5179484.126458
