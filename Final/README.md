@@ -1,4 +1,4 @@
-A synthesizable Verilog implementation of pipelined MIPS
+A synthesizable Verilog implementation of pipelined MIPS that supports 23 instructions and handles hazards
 ==
 Supported instructions:<br />
 ![](supported_instructions.png)
