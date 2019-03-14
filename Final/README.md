@@ -1,1 +1,4 @@
-Verilog implementation of pipeline MIPS
+A synthesizable Verilog implementation of pipelined MIPS
+==
+Supported instructions:
+
